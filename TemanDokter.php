@@ -7,7 +7,7 @@
 	<title></title>
 </head>
 <body>
-	<h1>Kita Mulai Laravel</h1>
+	<h1>Hello world</h1>
 	<h1>Teman Dokter Aplikasi Sisten Informasi</h1>
 </body>
 </html>
