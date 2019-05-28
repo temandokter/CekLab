@@ -13,14 +13,15 @@ class CreateKlinikTable extends Migration
      */
     public function up()
     {
-        Schema::create('klinik', function (Blueprint $table) {
+        Schema::create('clinics', function (Blueprint $table) {
             $table->bigIncrements('id_klinik');
             $table->unsignedBigInteger('id_dokter');
             $table->string('nama_klinik');
+            $table->string('slug')->nullable()->default(null);
             $table->text('alamat_klinik');
             $table->timestamps();
 
-            $table->foreign('id_dokter')->references('id_dokter')->on('dokter');
+            $table->foreign('id_dokter')->references('id_dokter')->on('doctors');
 
 
         });
@@ -33,6 +34,6 @@ class CreateKlinikTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('klinik');
+        Schema::dropIfExists('clinics');
     }
 }

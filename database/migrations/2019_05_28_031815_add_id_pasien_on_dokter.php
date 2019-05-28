@@ -13,10 +13,10 @@ class AddIdPasienOnDokter extends Migration
      */
     public function up()
     {
-        Schema::table('dokter', function (Blueprint $table) {
+        Schema::table('doctors', function (Blueprint $table) {
             $table->unsignedBigInteger('id_pasien')->after('email');
 
-            $table->foreign('id_pasien')->references('id_pasien')->on('pasien')->onUpdate('CASCADE')->onDelete('CASCADE');
+            $table->foreign('id_pasien')->references('id_pasien')->on('patients')->onUpdate('CASCADE')->onDelete('CASCADE');
         });
     }
 
@@ -27,7 +27,7 @@ class AddIdPasienOnDokter extends Migration
      */
     public function down()
     {
-        Schema::table('dokter', function (Blueprint $table) {
+        Schema::table('doctors', function (Blueprint $table) {
             $table->dropForeign(['id_pasien']);
             $table->dropColumn('id_pasien');
         });

@@ -13,10 +13,11 @@ class CreateDokterTables extends Migration
      */
     public function up()
     {
-        Schema::create('dokter', function (Blueprint $table) {
+        Schema::create('doctors', function (Blueprint $table) {
             $table->bigIncrements('id_dokter');
             $table->string('nama_dokter');
             $table->string('nama_klinik');
+            $table->string('slug')->nullable()->default(null);
             $table->text('alamat_klinik');
             $table->string('no_hp');
             $table->string('email');
@@ -31,6 +32,6 @@ class CreateDokterTables extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('dokter_tables');
+        Schema::dropIfExists('doctors');
     }
 }
