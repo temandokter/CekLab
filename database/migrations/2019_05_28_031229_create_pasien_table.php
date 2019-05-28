@@ -13,9 +13,10 @@ class CreatePasienTable extends Migration
      */
     public function up()
     {
-        Schema::create('pasien', function (Blueprint $table) {
+        Schema::create('patients', function (Blueprint $table) {
             $table->bigIncrements('id_pasien');
             $table->string('nama_pasien');
+            $table->string('slug')->nullable()->default(null);
             $table->string('no_rm');
             $table->date('tgl_lahir');
             $table->bigInteger('umur');
@@ -34,6 +35,6 @@ class CreatePasienTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('pasien');
+        Schema::dropIfExists('patients');
     }
 }

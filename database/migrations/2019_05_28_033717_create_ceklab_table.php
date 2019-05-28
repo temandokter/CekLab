@@ -13,13 +13,14 @@ class CreateCeklabTable extends Migration
      */
     public function up()
     {
-        Schema::create('ceklab', function (Blueprint $table) {
+        Schema::create('check_labs', function (Blueprint $table) {
             $table->bigIncrements('id_lab');
             $table->string('nama_lab');
+            $table->string('slug')->nullable()->default(null);
             $table->unsignedBigInteger('id_klinik');
             $table->timestamps();
 
-            $table->foreign('id_klinik')->references('id_klinik')->on('klinik');
+            $table->foreign('id_klinik')->references('id_klinik')->on('clinics');
         });
     }
 
@@ -30,6 +31,6 @@ class CreateCeklabTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('ceklab');
+        Schema::dropIfExists('check_labs');
     }
 }
