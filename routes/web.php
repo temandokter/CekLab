@@ -1,4 +1,9 @@
 <?php
+use App\Patient;
+use App\Http\Controllers\PatientController;
+
+// use Symfony\Component\Routing\Route;
+// use Symfony\Component\Routing\Annotation\Route;
 
 /*
 |--------------------------------------------------------------------------
@@ -11,8 +16,8 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+Route::prefix('/')->middleware('auth')->group(function () {
+    Route::resource('patient','PatientController');
 });
 
 Auth::routes();
