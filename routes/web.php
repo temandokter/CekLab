@@ -18,10 +18,8 @@ use App\Http\Controllers\PatientController;
 // Route::get('/','PatientController@index');
 
 Route::prefix('/')->middleware('auth')->group(function () {
-    Route::resource('/','PatientController');
+    Route::resource('/','HomeController');
     Route::resource('patient','PatientController');
 });
 
 Auth::routes();
-
-Route::get('/home', 'HomeController@index')->name('home');

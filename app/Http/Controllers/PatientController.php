@@ -69,7 +69,7 @@ class PatientController extends Controller
 
         
 
-        return redirect()->route('patient.show')->withSuccess('Berhasil ditambahkan');
+        return redirect()->route('patient.index')->withSuccess('Berhasil ditambahkan');
     }
 
     /**
@@ -81,7 +81,7 @@ class PatientController extends Controller
     public function show($id)
     {
         $patients = Patient::get();
-        return view('patient.show',[
+        return view('patient.index',[
             'patient'=>$patients,
         ]);
     }
