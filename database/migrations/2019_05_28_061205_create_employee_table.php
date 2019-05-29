@@ -12,12 +12,13 @@ class CreateEmployeeTable extends Migration
      * @return void
      */
     public function up()
-    {
+    { 
         Schema::create('employee', function (Blueprint $table) {
-            $table->bigIncrements('id_Employee');
-            $table->string('name_employee');
-            $table->string('address_employee');
-            $table->string('email_employee');
+            $table->bigIncrements('id_pegawai');
+            $table->string('name_pegawai');
+            $table->string('slug')->nullable()->default(null);
+            $table->string('alamat_pegawai');
+            $table->string('email_pegawai');
             $table->timestamps();
         });
     }

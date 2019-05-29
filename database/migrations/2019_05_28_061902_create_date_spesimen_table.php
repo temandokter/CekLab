@@ -12,11 +12,15 @@ class CreateDateSpesimenTable extends Migration
      * @return void
      */
     public function up()
-    {
+    { 
         Schema::create('date_spesimen', function (Blueprint $table) {
-            $table->bigIncrements('id_DateSpesimen');
-            $table->DATETIME('date');
+            $table->bigIncrements('id_tanggal_spesimen');
+            $table->DATETIME('tanggal');
+            $table->string('slug')->nullable()->default(null);
+            $table->unsignedBigInteger('id_pegawai');
             $table->timestamps();
+
+            $table->foreign('id_pegawai')->references('id_pegawai')->on('employee');
         });
     }
 
