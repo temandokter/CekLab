@@ -113,7 +113,7 @@
 <script src="{{ asset('assets/plugins/input-mask/jquery.inputmask.js')}}"></script>
 <script src="{{ asset('assets/plugins/input-mask/jquery.inputmask.date.extensions.js')}}"></script>
 <script src="{{ asset('assets/plugins/input-mask/jquery.inputmask.extensions.js')}}"></script>
-<script src="{{ asset('bower_components/select2/dist/js/select2.full.min.js')}}"></script>
+<script src="{{ asset('assets/bower_components/select2/dist/js/select2.full.min.js')}}"></script>
 <!-- daterangepicker -->
 <script src="{{ asset('assets/bower_components/moment/min/moment.min.js')}}"></script>
 <script src="{{ asset('assets/bower_components/bootstrap-daterangepicker/daterangepicker.js')}}"></script>
@@ -190,6 +190,7 @@
         $('#datepicker').datepicker({
           autoclose: true
         })
+        $('#datepicker').datepicker('yyyy/mm/dd')
     
         //iCheck for checkbox and radio inputs
         $('input[type="checkbox"].minimal, input[type="radio"].minimal').iCheck({
