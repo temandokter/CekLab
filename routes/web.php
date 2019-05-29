@@ -15,9 +15,10 @@ use App\Http\Controllers\PatientController;
 | contains the "web" middleware group. Now create something great!
 |
 */
-Route::get('/','PatientController@index');
+// Route::get('/','PatientController@index');
 
 Route::prefix('/')->middleware('auth')->group(function () {
+    Route::resource('/','PatientController');
     Route::resource('patient','PatientController');
 });
 
