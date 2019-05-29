@@ -1,4 +1,9 @@
 <?php
+use App\Patient;
+use App\Http\Controllers\PatientController;
+
+// use Symfony\Component\Routing\Route;
+// use Symfony\Component\Routing\Annotation\Route;
 
 /*
 |--------------------------------------------------------------------------
@@ -10,9 +15,10 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
+Route::get('/','PatientController@index');
 
-Route::get('/', function () {
-    return view('welcome');
+Route::prefix('/')->middleware('auth')->group(function () {
+    Route::resource('patient','PatientController');
 });
 
 Auth::routes();

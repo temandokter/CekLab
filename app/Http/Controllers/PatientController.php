@@ -13,8 +13,11 @@ class PatientController extends Controller
      */
     public function index()
     {
-        $patients - Patient::latest();
-        return view('patient.index',['patients'=>$patients,]);
+
+        $patients = Patient::get();
+
+        return view('index',['patients'=>$patients,]);
+
     }
 
     /**
