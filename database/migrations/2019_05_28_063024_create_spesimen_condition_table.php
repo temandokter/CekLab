@@ -14,10 +14,14 @@ class CreateSpesimenConditionTable extends Migration
     public function up()
     {
         Schema::create('spesimen_condition', function (Blueprint $table) {
-            $table->bigIncrements('id_Condition_Spesimen');
+            $table->bigIncrements('id_kondisi_spesimen');
             $table->string('kondisi');
-            $table->boolean('pilihan');
+            $table->string('pilihan');
+            $table->string('slug')->nullable()->default(null);
+            $table->unsignedBigInteger('id_pegawai');
             $table->timestamps();
+
+            $table->foreign('id_pegawai')->references('id_pegawai')->on('employee');
         });
     }
 

@@ -12,12 +12,16 @@ class CreateOfficerConfirmationTable extends Migration
      * @return void
      */
     public function up()
-    {
+    { 
         Schema::create('officer_confirmation', function (Blueprint $table) {
-            $table->bigIncrements('id_Confirmation');
-            $table->string('patients_name');
-            $table->DATETIME('date');
+            $table->bigIncrements('id_konfimasi');
+            $table->string('nama_pasien');
+            $table->DATETIME('tanggal');
+            $table->string('slug')->nullable()->default(null);
+            $table->unsignedBigInteger('id_pegawai');
             $table->timestamps();
+
+            $table->foreign('id_pegawai')->references('id_pegawai')->on('employee');
         });
     }
 
