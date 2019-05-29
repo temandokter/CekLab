@@ -15,7 +15,6 @@ class PatientController extends Controller
     {
 
         $patients = Patient::get();
-
         return view('index',['patients'=>$patients,]);
 
     }
@@ -27,7 +26,10 @@ class PatientController extends Controller
      */
     public function create()
     {
-        return view('patient.create');
+        $patients = Patient::get();
+        return view('patient.create',[
+            'patient'=>$patients,
+        ]);
     }
 
     /**
@@ -72,7 +74,10 @@ class PatientController extends Controller
      */
     public function show($id)
     {
-        //
+        $patients = Patient::get();
+        return view('patient.show',[
+            'patient'=>$patients,
+        ]);
     }
 
     /**
