@@ -11,15 +11,22 @@
         </div>
         <!-- /.box-header -->
         <!-- form start -->
-        <form role="form">
+        <form action="{{ route('patient.store') }}" method="POST">
+          @csrf
           <div class="box-body">
             <div class="form-group col-md-6">
               <label for="nama_pasien">Nama Pasien</label>
-              <input type="text" class="form-control" id="nama_pasien" placeholder="Masukkan nama pasien">
+              <input type="text" class="form-control {{ $errors->has('nama_pasien') ? 'is-invalid' : '' }}" name="nama_pasien" placeholder="Masukkan nama pasien" value="{{ old('nama_pasien')}}">
+              <div class="invalid-feedback">
+                  {{ $errors->first('nama_pasien') }}
+          </div>
             </div>
             <div class="form-group col-md-6">
               <label for="no_rm">No RM</label>
-              <input type="text" class="form-control" id="no_rm" placeholder="Masukkan No RM">
+              <input type="text" class="form-control {{ $errors->has('no_rm') ? 'is-invalid' : '' }}" name="no_rm" placeholder="Masukkan No RM" value="{{ old('no_rm')}}">
+              <div class="invalid-feedback">
+                  {{ $errors->first('no_rm') }}
+          </div>
             </div>
             <div class="form-group col-md-6">
               <label>Tangal:</label>
@@ -27,37 +34,55 @@
                 <div class="input-group-addon">
                   <i class="fa fa-calendar"></i>
                 </div>
-                <input type="text" class="form-control pull-right" id="datepicker">
+                <input type="text" class="form-control pull-right {{ $errors->has('no_rm') ? 'is-invalid' : '' }}" id="datepicker" name="tgl_lahir" value="{{ old('tgl_lahir')}}">
               </div>
+              <div class="invalid-feedback">
+                  {{ $errors->first('tgl_lahir') }}
+          </div>
             </div>
             <div class="form-group col-md-6">
               <label for="umur">Umur</label>
-              <input type="text" class="form-control" id="umur" disabled>
+              <input type="text" class="form-control {{ $errors->has('umur') ? 'is-invalid' : '' }}" name="umur"  value="{{ old('nama_pasien')}}">
+              <div class="invalid-feedback">
+                  {{ $errors->first('umur') }}
+          </div>
             </div>
             <div class="form-group col-md-6">
               <label for="pekerjaan">Pekerjaan</label>
-              <input type="text" class="form-control" id="pekerjaan" placeholder="Masukkan pekerjaan">
+              <input type="text" class="form-control {{ $errors->has('pekerjaan') ? 'is-invalid' : '' }}" name="pekerjaan" placeholder="Masukkan pekerjaan" value="{{ old('pekerjaan')}}">
+              <div class="invalid-feedback">
+                  {{ $errors->first('pekerjaan') }}
+          </div>
             </div>
             <div class="form-group col-md-6">
               <label for="status">Status</label>
-              <input type="text" class="form-control" id="status" placeholder="Masukkan Status">
+              <input type="text" class="form-control {{ $errors->has('status') ? 'is-invalid' : '' }}" name="status" placeholder="Masukkan Status" value="{{ old('status')}}">
+              <div class="invalid-feedback">
+                  {{ $errors->first('status') }}
+          </div>
             </div>
             <div class="form-group col-md-6">
               <label>Jenis Kelamin</label>
-              <select class="form-control select2 select2-hidden-accessible" style="width: 100%;" tabindex="-1" aria-hidden="true">
-                <option>Laki-laki</option>
-                <option>Perempuan</option>
+              <select class="form-control select2 select2-hidden-accessible {{ $errors->has('jenkel') ? 'is-invalid' : '' }}" style="width: 100%;" tabindex="-1" aria-hidden="true" name="jenkel">
+                <option value="{{ 'laki-laki' }}">Laki-laki</option>
+                <option value="{{ 'perempuan' }}">Perempuan</option>
               </select>
+              <div class="invalid-feedback">
+                  {{ $errors->first('jenkel') }}
+            </div>
             </div>
             <div class="form-group col-md-6">
               <label for="no_antrian">No Antrian</label>
-              <input type="text" class="form-control" id="no_antrian" placeholder="Masukkan No Antrian">
+              <input type="text" class="form-control {{ $errors->has('no_antrian') ? 'is-invalid' : '' }}" name="no_antrian" placeholder="Masukkan No Antrian" value="{{ old('no_antrian')}}">
+              <div class="invalid-feedback">
+                  {{ $errors->first('no_antrian') }}
+          </div>
             </div>
           </div>
           <!-- /.box-body -->
 
           <div class="box-footer">
-            <button type="submit" class="btn btn-primary">Submit</button>
+            <button type="submit" value="save" class="btn btn-primary">Submit</button>
           </div>
         </form>
       </div>
