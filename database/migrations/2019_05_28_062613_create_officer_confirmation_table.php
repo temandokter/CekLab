@@ -14,14 +14,14 @@ class CreateOfficerConfirmationTable extends Migration
     public function up()
     { 
         Schema::create('officer_confirmation', function (Blueprint $table) {
-            $table->bigIncrements('id_konfimasi');
+            $table->bigIncrements('id');
             $table->string('nama_pasien');
             $table->DATETIME('tanggal');
             $table->string('slug')->nullable()->default(null);
             $table->unsignedBigInteger('id_pegawai');
             $table->timestamps();
 
-            $table->foreign('id_pegawai')->references('id_pegawai')->on('employee');
+            $table->foreign('id_pegawai')->references('id')->on('employee');
         });
     }
 

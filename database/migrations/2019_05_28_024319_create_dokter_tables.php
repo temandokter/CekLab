@@ -14,7 +14,7 @@ class CreateDokterTables extends Migration
     public function up()
     {
         Schema::create('doctors', function (Blueprint $table) {
-            $table->bigIncrements('id_dokter');
+            $table->bigIncrements('id');
             $table->string('nama_dokter');
             $table->string('nama_klinik');
             $table->string('slug')->nullable()->default(null);

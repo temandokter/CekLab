@@ -1,6 +1,7 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\admin;
+use App\Http\Controllers\Controller;
 use App\Patient;
 use Illuminate\Http\Request;
 use Carbon\Carbon;
