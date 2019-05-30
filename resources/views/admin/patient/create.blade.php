@@ -11,7 +11,7 @@
         </div>
         <!-- /.box-header -->
         <!-- form start -->
-        <form action="{{ route('patient.store') }}" method="POST">
+        <form action="{{ route('admin.patient.store') }}" method="POST">
           @csrf
           <div class="box-body">
             <div class="form-group col-md-6">
@@ -55,17 +55,22 @@
           </div>
             </div>
             <div class="form-group col-md-6">
-              <label for="status">Status</label>
-              <input type="text" class="form-control {{ $errors->has('status') ? 'is-invalid' : '' }}" name="status" placeholder="Masukkan Status" value="{{ old('status')}}">
-              <div class="invalid-feedback">
-                  {{ $errors->first('status') }}
-          </div>
-            </div>
+                <label>Status</label>
+                <select class="form-control {{ $errors->has('status') ? 'is-invalid' : '' }}" style="width: 100%;" tabindex="-1" aria-hidden="true" name="status">
+                  <option value="{{ 'Menikah' }}">Menikah</option>
+                  <option value="{{ 'Lajang' }}">Lajang</option>
+                  <option value="{{ 'Duda' }}">Duda</option>
+                  <option value="{{ 'Janda' }}">Janda</option>
+                </select>
+                <div class="invalid-feedback">
+                    {{ $errors->first('status') }}
+              </div>
+              </div>
             <div class="form-group col-md-6">
               <label>Jenis Kelamin</label>
-              <select class="form-control select2 select2-hidden-accessible {{ $errors->has('jenkel') ? 'is-invalid' : '' }}" style="width: 100%;" tabindex="-1" aria-hidden="true" name="jenkel">
-                <option value="{{ 'laki-laki' }}">Laki-laki</option>
-                <option value="{{ 'perempuan' }}">Perempuan</option>
+              <select class="form-control {{ $errors->has('jenkel') ? 'is-invalid' : '' }}" style="width: 100%;" tabindex="-1" aria-hidden="true" name="jenkel">
+                <option value="{{ 'Laki-laki' }}">Laki-laki</option>
+                <option value="{{ 'Perempuan' }}">Perempuan</option>
               </select>
               <div class="invalid-feedback">
                   {{ $errors->first('jenkel') }}

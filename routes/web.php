@@ -1,6 +1,7 @@
 <?php
 use App\Patient;
-use App\Http\Controllers\PatientController;
+use App\Http\Controllers\Admin\PatientController;
+// use Illuminate\Routing\Route;
 
 // use Symfony\Component\Routing\Route;
 // use Symfony\Component\Routing\Annotation\Route;
@@ -17,9 +18,13 @@ use App\Http\Controllers\PatientController;
 */
 // Route::get('/','PatientController@index');
 
-Route::prefix('/')->middleware('auth')->group(function () {
+
+Route::prefix('admin')->middleware('auth')->name('admin.')->group(function () {
     Route::resource('/','HomeController');
-    Route::resource('patient','PatientController');
+    Route::resource('patient','admin\PatientController');
+    
 });
 
 Auth::routes();
+
+// Route::get('/{post}', 'PostController@show')->name('show');

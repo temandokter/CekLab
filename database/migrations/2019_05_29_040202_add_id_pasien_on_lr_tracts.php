@@ -16,7 +16,7 @@ class AddIdPasienOnLrTracts extends Migration
         Schema::table('lr_tracts', function (Blueprint $table) {
             $table->unsignedBigInteger('id_pasien')->after('id');
 
-            $table->foreign('id_pasien')->references('id_pasien')->on('patients')->onUpdate('CASCADE')->onDelete('CASCADE');
+            $table->foreign('id_pasien')->references('id')->on('patients')->onUpdate('CASCADE')->onDelete('CASCADE');
         });
     }
 
