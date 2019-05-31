@@ -1,6 +1,8 @@
 <?php
 use App\Patient;
-use App\Http\Controllers\Admin\PatientController;
+use App\Doctor;
+use App\Http\Controllers\admin\PatientController;
+use App\Http\Controllers\admin\DoctorController;
 // use Illuminate\Routing\Route;
 
 // use Symfony\Component\Routing\Route;
@@ -22,6 +24,7 @@ use App\Http\Controllers\Admin\PatientController;
 Route::prefix('admin')->middleware('auth')->name('admin.')->group(function () {
     Route::resource('/','HomeController');
     Route::resource('patient','admin\PatientController');
+    Route::resource('doctor','admin\DoctorController');
     
 });
 
