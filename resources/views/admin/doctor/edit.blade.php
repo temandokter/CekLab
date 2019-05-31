@@ -1,59 +1,77 @@
-@extends('layouts.app');
+<?php use App\Patient; ?>
+@extends('templates.default')
 
 @section('content')
-	<!doctype html>
-	<html lang="en">
-		<head>
-		    <!-- Required meta tags -->
-		    <meta charset="utf-8">
-		    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<div class="row">
+    <!-- left column -->
+    <div class="col-md-12">
+      <!-- general form elements -->
+      <div class="box box-primary">
+        <div class="box-header with-border">
+          <h3 class="box-title">Input Dokter</h3>
+        </div>
+        <!-- /.box-header -->
+        <!-- form start -->
+        <form action="{{ route('admin.doctor.update', $doctor->id) }}" method="POST">
+          @csrf
+          @method("PUT")
+          <div class="box-body">
+              <div class="form-group col-md-6">
+                <label for="nama_dokter">Nama Dokter</label>
+                <input type="text" class="form-control {{ $errors->has('nama_dokter') ? 'is-invalid' : '' }}" name="nama_dokter" placeholder="Masukkan Nama Dokter" value="{{ old('nama_dokter') ?? $doctor->nama_dokter}}">
+                <div class="invalid-feedback">
+                    {{ $errors->first('nama_dokter') }}
+            </div>
+              </div>
+              <div class="form-group col-md-6">
+                <label for="nama_klinik">Nama Klinik</label>
+                <input type="text" class="form-control {{ $errors->has('nama_klinik') ? 'is-invalid' : '' }}" name="nama_klinik" placeholder="Masukkan Nama Klinik" value="{{ old('nama_klinik')??$doctor->nama_klinik}}">
+                <div class="invalid-feedback">
+                    {{ $errors->first('nama_klinik') }}
+            </div>
+              </div>
+              <div class="form-group col-md-6">
+                <label for="alamat_klinik">Alamat Klinik</label>
+                <input type="text" class="form-control {{ $errors->has('alamat_klinik') ? 'is-invalid' : '' }}" name="alamat_klinik"  value="{{ old('alamat_klinik')?? $doctor->alamat_klinik}}" placeholder="Masukkan Alama Klinik">
+                <div class="invalid-feedback">
+                    {{ $errors->first('alamat_klinik') }}
+            </div>
+              </div>
+              <div class="form-group col-md-6">
+                <label for="no_hp">No HP</label>
+                <input type="text" class="form-control {{ $errors->has('no_hp') ? 'is-invalid' : '' }}" name="no_hp" placeholder="Masukkan No HP" value="{{ old('no_hp')??$doctor->no_hp}}">
+                <div class="invalid-feedback">
+                    {{ $errors->first('no_hp') }}
+            </div>
+              </div>
+              <div class="form-group col-md-6">
+                <label for="email">Email</label>
+                <input type="email" class="form-control {{ $errors->has('email') ? 'is-invalid' : '' }}" name="email" placeholder="Masukkan Email" value="{{ old('email')??$doctor->email}}">
+                <div class="invalid-feedback">
+                    {{ $errors->first('email') }}
+            </div>
+              </div>
+  
+              <div class="form-group col-md-6">
+                  <label for="id_pasien">Pasien</label>
+                  <select name="id_pasien" class="form-control">
+                    {{ $patients = Patient::get() }}
+                    @foreach ($patients as $patient)
+                      <option value="{{ $patient->id }}">{{ $patient->nama_pasien }}</option>                      
+                    @endforeach
+                  </select>
+              </div>
+            </div>
+            <!-- /.box-body -->
 
-		    <!-- Bootstrap CSS -->
-		    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+          <div class="box-footer">
+            <button type="submit" value="save" class="btn btn-primary">Submit</button>
+          </div>
+        </form>
+      </div>
+      <!-- /.box -->
 
-		    <title>Halaman Edit</title>
-		</head>
-		<body>
-			<div class="container">
-				<h1>Halaman Edit Table Post</h1> 
-		    	<form action="{{ route('admin.post.update', $post->id) }}" method="POST" enctype="multipart/form-data">
-		    	@csrf
-		    	@method("PUT")
-					<div class="form-group">
-					    <label for="exampleFormControlInput1">Email address</label>
-					    <input type="text" name="title" class="form-control {{ $errors->has('title') ? 'is-invalid' : '' }}" value="{{ old('title') ?? $post->title }}"  placeholder="name@example.com">
-					    <div class="invalid-feedback">
-					    	{{ $errors->first('title') }}
-					    </div>
-					</div>
-
-					<div class="form-group">
-					    <label for="exampleFormControlTextarea1">Example textarea</label>
-					    <textarea class="form-control {{ $errors->has('content') ? 'is-invalid' : '' }}" name="content" id="exampleFormControlTextarea1" rows="3"> {{ old('content') ?? $post->content }} </textarea>
-					    <div class="invalid-feedback">
-					    	{{ $errors->first('content') }}
-					    </div>
-					</div>
-
-					<div class="form-group">
-						<label for="" class="label">Image</label>
-						<input type="file" name="image" class="form-control" id="">
-					</div>
-
-					<div class="form-group">
-						<a href="{{ route('admin.post.index') }}" class="btn btn-primary">Cancel</a>
-						<input type="submit" name="" class="btn btn=primary" value="save">
-					</div>
-				</form>
-			</div>
-
-		    <!-- Optional JavaScript -->
-		    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-		    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-		    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-		    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-		</body>
-	</html>
+    </div>
+    <!--/.col (left) -->
+</div>
 @endsection
-
-
