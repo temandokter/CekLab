@@ -15,6 +15,13 @@
           @csrf
           <div class="box-body">
             <div class="form-group col-md-6">
+              <label for="no_antrian">No Antrian</label>
+              <input type="text" class="form-control {{ $errors->has('no_antrian') ? 'is-invalid' : '' }}" name="no_antrian" placeholder="Masukkan No Antrian" value="{{ old('no_antrian')}}">
+              <div class="invalid-feedback">
+                  {{ $errors->first('no_antrian') }}
+          </div>
+            </div>
+            <div class="form-group col-md-6">
               <label for="nama_pasien">Nama Pasien</label>
               <input type="text" class="form-control {{ $errors->has('nama_pasien') ? 'is-invalid' : '' }}" name="nama_pasien" placeholder="Masukkan nama pasien" value="{{ old('nama_pasien')}}">
               <div class="invalid-feedback">
@@ -29,12 +36,22 @@
           </div>
             </div>
             <div class="form-group col-md-6">
-              <label>Tangal:</label>
+              <label>Jenis Kelamin</label>
+              <select class="form-control {{ $errors->has('jenkel') ? 'is-invalid' : '' }}" style="width: 100%;" tabindex="-1" aria-hidden="true" name="jenkel">
+                <option value="{{ 'Laki-laki' }}">Laki-laki</option>
+                <option value="{{ 'Perempuan' }}">Perempuan</option>
+              </select>
+              <div class="invalid-feedback">
+                {{ $errors->first('jenkel') }}
+              </div>
+            </div>
+            <div class="form-group col-md-6">
+              <label>Tangal Lahir:</label>
               <div class="input-group date">
                 <div class="input-group-addon">
                   <i class="fa fa-calendar"></i>
                 </div>
-                <input type="text" class="form-control pull-right {{ $errors->has('no_rm') ? 'is-invalid' : '' }}" id="datepicker" name="tgl_lahir" value="{{ old('tgl_lahir')}}">
+                <input type="text" onchange="tanggal()" class="form-control pull-right {{ $errors->has('no_rm') ? 'is-invalid' : '' }}" id="datepicker" name="tgl_lahir" value="{{ old('tgl_lahir')}}">
               </div>
               <div class="invalid-feedback">
                   {{ $errors->first('tgl_lahir') }}
@@ -42,7 +59,7 @@
             </div>
             <div class="form-group col-md-6">
               <label for="umur">Umur</label>
-              <input type="text" class="form-control {{ $errors->has('umur') ? 'is-invalid' : '' }}" name="umur"  value="{{ old('nama_pasien')}}">
+              <input type="text" class="form-control {{ $errors->has('umur') ? 'is-invalid' : '' }}" name="umur" id="umur" value="{{ old('umur')}}" readonly>
               <div class="invalid-feedback">
                   {{ $errors->first('umur') }}
           </div>
@@ -66,23 +83,6 @@
                     {{ $errors->first('status') }}
               </div>
               </div>
-            <div class="form-group col-md-6">
-              <label>Jenis Kelamin</label>
-              <select class="form-control {{ $errors->has('jenkel') ? 'is-invalid' : '' }}" style="width: 100%;" tabindex="-1" aria-hidden="true" name="jenkel">
-                <option value="{{ 'Laki-laki' }}">Laki-laki</option>
-                <option value="{{ 'Perempuan' }}">Perempuan</option>
-              </select>
-              <div class="invalid-feedback">
-                  {{ $errors->first('jenkel') }}
-            </div>
-            </div>
-            <div class="form-group col-md-6">
-              <label for="no_antrian">No Antrian</label>
-              <input type="text" class="form-control {{ $errors->has('no_antrian') ? 'is-invalid' : '' }}" name="no_antrian" placeholder="Masukkan No Antrian" value="{{ old('no_antrian')}}">
-              <div class="invalid-feedback">
-                  {{ $errors->first('no_antrian') }}
-          </div>
-            </div>
           </div>
           <!-- /.box-body -->
 

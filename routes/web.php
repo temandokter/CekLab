@@ -25,6 +25,7 @@ Route::prefix('admin')->middleware('auth')->name('admin.')->group(function () {
     Route::resource('/','HomeController');
     Route::resource('patient','admin\PatientController');
     Route::resource('doctor','admin\DoctorController');
+    Route::resource('clinic','admin\ClinicController');
     
 });
 

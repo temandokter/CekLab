@@ -44,7 +44,7 @@
   <![endif]-->
 
   <!-- Google Font -->
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
+  {{-- <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic"> --}}
 </head>
 <body class="hold-transition skin-blue sidebar-mini">
 <div class="wrapper">
@@ -139,9 +139,17 @@
         'autoWidth'   : false
       })
     })
-  </script>
-  <script>
+    function tanggal(){
+      let input = $("#datepicker").val() 
+      let pisah = input.split("/") 
+      let mentah = pisah[2]+"-"+pisah[0]+"-"+pisah[1]
+      // console.log(mentah)
+      const getAge = birthDate => Math.floor((new Date() - new Date(birthDate).getTime()) / 3.15576e+10)
+
+      $("#umur").val(getAge(mentah))
+    }
       $(function () {
+        
         //Initialize Select2 Elements
         $('.select2').select2()
     
