@@ -41,17 +41,19 @@ class ClinicalinfoController extends Controller
      */
     public function store(Request $request)
     {
-        $this->validate($request,[
-            'nama_klinis' => 'required',
+        
 
-        ],[
-            'required' => 'Atribut harus diisi',
-        ]);
-
-        $cinfo = new Clinical_info;
-        $cinfo->nama_klinis = $request->nama_klinis;
-        $cinfo->slug = str_slug($request->nama_klinis);
-        $cinfo->pilih_klinis = $request->pilih_klinis ? 1 : 0 ?? 0;
+        $cinfo = new Clinical_infos;
+        $cinfo->paska_bedah = $request->paska_bedah ? 1 : 0 ?? 0;
+        $cinfo->immunokompromise = $request->immunokompromise ? 1 : 0 ?? 0;
+        $cinfo->ventilator = $request->ventilator ? 1 : 0 ?? 0;
+        $cinfo->transplantasi = $request->transplantasi ? 1 : 0 ?? 0;
+        $cinfo->kehamilan = $request->kehamilan ? 1 : 0 ?? 0;
+        $cinfo->diabetik = $request->diabetik ? 1 : 0 ?? 0;
+        $cinfo->pid = $request->pid ? 1 : 0 ?? 0;
+        $cinfo->alergi_penicilin = $request->alergi_penicilin ? 1 : 0 ?? 0;
+        $cinfo->riwayat_msrsa = $request->riwayat_mrsa ? 1 : 0 ?? 0;
+        $cinfo->gejala_isk = $request->gejala_isk ? 1 : 0 ?? 0;
         $cinfo->id_pasien = $request->id_pasien;
         $cinfo->save();
 
@@ -96,18 +98,17 @@ class ClinicalinfoController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $this->validate($request,[
-            'nama_klinis' => 'required',
-            'pilih_klinis' => 'required',
-
-        ],[
-            'required' => 'Atribut harus diisi',
-        ]);
-
         $cinfo = Clinical_infos::find($id);
-        $cinfo->nama_klinis = $request->nama_klinis;
-        $cinfo->slug = str_slug($request->nama_klinis);
-        $cinfo->pilih_klinis = $request->pilih_klinis;
+        $cinfo->paska_bedah = $request->paska_bedah ? 1 : 0 ?? 0;
+        $cinfo->immunokompromise = $request->immunokompromise ? 1 : 0 ?? 0;
+        $cinfo->ventilator = $request->ventilator ? 1 : 0 ?? 0;
+        $cinfo->transplantasi = $request->transplantasi ? 1 : 0 ?? 0;
+        $cinfo->kehamilan = $request->kehamilan ? 1 : 0 ?? 0;
+        $cinfo->diabetik = $request->diabetik ? 1 : 0 ?? 0;
+        $cinfo->pid = $request->pid ? 1 : 0 ?? 0;
+        $cinfo->alergi_penicilin = $request->alergi_penicilin ? 1 : 0 ?? 0;
+        $cinfo->riwayat_msrsa = $request->riwayat_mrsa ? 1 : 0 ?? 0;
+        $cinfo->gejala_isk = $request->gejala_isk ? 1 : 0 ?? 0;
         $cinfo->id_pasien = $request->id_pasien;
         $cinfo->save();
 

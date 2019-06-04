@@ -18,7 +18,7 @@
           <div class="box-body">
               <div class="form-group col-md-6">
                 <label for="nama_lab">Nama Lab</label>
-                <input type="text" class="form-control {{ $errors->has('nama_lab') ? 'is-invalid' : '' }}" name="nama_lab" placeholder="Masukkan Nama Klinik" value="{{ old('alamat_klinik') ?? $clab->nama_lab}}">
+                <input type="text" class="form-control {{ $errors->has('nama_lab') ? 'is-invalid' : '' }}" name="nama_lab" placeholder="Masukkan Nama Lab" value="{{ old('nama_lab') ?? $clab->nama_lab}}">
                 <div class="invalid-feedback">
                     {{ $errors->first('nama_lab') }}
             </div>
