@@ -66,7 +66,7 @@
             <div class="form-group col-md-3">
                 <div class="checkbox">
                     <label>
-                      <input type="checkbox" value="{{('tranplantasi')}}" name="transplantasi">
+                      <input type="checkbox" value="{{('transplantasi')}}" name="transplantasi">
                       Transplantasi
                     </label>
                 </div>

@@ -25,11 +25,11 @@
                     @endforeach
                   </select>
               </div>
-              
                 <div class="form-group col-md-3">
                     <div class="checkbox">
                         <label>
-                          <input type="checkbox" value="{{('gejala_isk')}}" name="gejala_isk">
+                          <input type="checkbox" value="{{ ('gejala_isk') ?? $cinfo->gejala_isk}}" name="gejala_isk"
+                          @if(($cinfo->gejala_isk)==1) checked @endif>
                           Gejala ISK
                         </label>
                     </div>
@@ -37,7 +37,8 @@
                 <div class="form-group col-md-3">
                     <div class="checkbox">
                         <label>
-                          <input type="checkbox" value="{{ ('diabetik') }}" name="diabetik">
+                          <input type="checkbox" value="{{ ('diabetik') ?? $cinfo->diabetik }}" name="diabetik" 
+                          @if(($cinfo->diabetik)==1) checked @endif>
                           Diabetik
                         </label>
                     </div>
@@ -45,7 +46,8 @@
                 <div class="form-group col-md-3">
                     <div class="checkbox">
                         <label>
-                          <input type="checkbox" value="{{ ('pid') }}" name="pid">
+                          <input type="checkbox" value="{{ ('pid') ?? $cinfo->pid}}" name="pid" 
+                          @if(($cinfo->pid)==1) checked @endif>
                           Pelvic Infammatory Disease
                         </label>
                     </div>
@@ -53,7 +55,8 @@
                 <div class="form-group col-md-3">
                     <div class="checkbox">
                         <label>
-                          <input type="checkbox" value="{{ ('kehamilan') }}" name="kehamilan">
+                          <input type="checkbox" value="{{ ('kehamilan') ?? $cinfo->kehamilan}}" name="kehamilan"
+                          @if(($cinfo->kehamilan)==1) checked @endif>
                           Kehamilan
                         </label>
                     </div>
@@ -61,7 +64,8 @@
                 <div class="form-group col-md-3">
                     <div class="checkbox">
                         <label>
-                          <input type="checkbox" value="{{('riwayat_mrsa')}}" name="riwayat_mrsa">
+                          <input type="checkbox" value="{{ ('riwayat_mrsa') ?? $cinfo->riwayat_mrsa}}" name="riwayat_mrsa"
+                          @if(($cinfo->riwayat_mrsa)==1) checked @endif>
                           Riwayat MRSA (+)/ESBL(+)/VRE(+)
                         </label>
                     </div>
@@ -69,7 +73,8 @@
                 <div class="form-group col-md-3">
                     <div class="checkbox">
                         <label>
-                          <input type="checkbox" value="{{('tranplantasi')}}" name="transplantasi">
+                          <input type="checkbox" value="{{ ('transplantasi') ?? $cinfo->transplantasi}}" name="transplantasi"
+                          @if(($cinfo->transplantasi)==1) checked @endif>
                           Transplantasi
                         </label>
                     </div>
@@ -77,7 +82,8 @@
                 <div class="form-group col-md-3">
                     <div class="checkbox">
                         <label>
-                          <input type="checkbox" value="{{('alergi_pinicilin')}}" name="alergi_penicilin">
+                          <input type="checkbox" value="{{ ('alergi_pinicilin') ?? $cinfo->alergi_penicilin}}" name="alergi_penicilin"
+                          @if(($cinfo->alergi_penicilin)==1) checked @endif>
                           Alergi Penicilin
                         </label>
                     </div>
@@ -86,7 +92,8 @@
                 <div class="form-group col-md-3">
                     <div class="checkbox">
                         <label>
-                          <input type="checkbox" value="{{('ventilator')}}" name="ventilator">
+                          <input type="checkbox" value="{{('ventilator') ?? $cinfo->ventilator}}" name="ventilator"
+                          @if(($cinfo->ventilator)==1) checked @endif>
                           Penggunaan Ventilator
                         </label>
                     </div>
@@ -94,7 +101,8 @@
                 <div class="form-group col-md-3">
                     <div class="checkbox">
                         <label>
-                          <input type="checkbox" value="{{('immunokompromise')}}" name="immunokompromise">
+                          <input type="checkbox" value="{{('immunokompromise') ?? $cinfo->immunokompromise}}" name="immunokompromise"
+                          @if(($cinfo->immunokompromise)==1) checked @endif>
                           Immunokompromise
                         </label>
                     </div>
@@ -102,7 +110,8 @@
                 <div class="form-group col-md-3">
                     <div class="checkbox">
                         <label>
-                          <input type="checkbox" value="{{('paska_bedah')}}" name="paska_bedah">
+                          <input type="checkbox" value="{{('paska_bedah') ?? $cinfo->paska_bedah}}" name="paska_bedah"
+                          @if(($cinfo->paska_bedah)==1) checked @endif>
                           Paska bedah
                         </label>
                     </div>
