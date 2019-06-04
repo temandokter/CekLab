@@ -35,16 +35,16 @@
             <tbody>
               @foreach ($cinfos as $cinfo)
             <tr>
-              <td>{{ $cinfo->paska_bedah }}</td>
-              <td>{{ $cinfo->immunokompromise }}</td>
-              <td>{{ $cinfo->ventilator }}</td>
-              <td>{{ $cinfo->transplantasi }}</td>
-              <td>{{ $cinfo->kehamilan }}</td>
-              <td>{{ $cinfo->diabetik }}</td>
-              <td>{{ $cinfo->pid }}</td>
-              <td>{{ $cinfo->alergi_penicilin }}</td>
-              <td>{{ $cinfo->riwayat_msrsa }}</td>
-              <td>{{ $cinfo->gejala_isk }}</td>
+              <td>@if(($cinfo->paska_bedah)==1) pos(+) @else neg(-) @endif</td>
+              <td>@if(($cinfo->immunokompromise)==1) pos(+) @else neg(-) @endif</td>
+              <td>@if(($cinfo->ventilator)==1) pos(+) @else neg(-) @endif</td>
+              <td>@if(($cinfo->transplantasi)==1) pos(+) @else neg(-) @endif</td>
+              <td>@if(($cinfo->kehamilan)==1) pos(+) @else neg(-) @endif</td>
+              <td>@if(($cinfo->diabetik)==1) pos(+) @else neg(-) @endif</td>
+              <td>@if(($cinfo->pid)==1) pos(+) @else neg(-) @endif</td>
+              <td>@if(($cinfo->alergi_penicilin)==1) pos(+) @else neg(-) @endif</td>
+              <td>@if(($cinfo->riwayat_msrsa)==1) pos(+) @else neg(-) @endif</td>
+              <td>@if(($cinfo->gejala_isk)==1) pos(+) @else neg(-) @endif</td>
               {{-- <td>{{ $cinfo->doctor->nama_dokter }}</td> --}}
               <td>
                 <a href="{{ route('admin.cinfo.edit', $cinfo->id) }}">Edit</a>

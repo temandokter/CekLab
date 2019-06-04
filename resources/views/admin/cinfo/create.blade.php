@@ -58,7 +58,7 @@
             <div class="form-group col-md-3">
                 <div class="checkbox">
                     <label>
-                      <input type="checkbox" value="{{('riwayat_mrsa')}}" name="riwayat_mrsa">
+                      <input type="checkbox" value="{{('riwayat_msrsa')}}" name="riwayat_mrsa">
                       Riwayat MRSA (+)/ESBL(+)/VRE(+)
                     </label>
                 </div>

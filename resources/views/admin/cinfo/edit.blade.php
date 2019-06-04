@@ -64,8 +64,8 @@
                 <div class="form-group col-md-3">
                     <div class="checkbox">
                         <label>
-                          <input type="checkbox" value="{{ ('riwayat_mrsa') ?? $cinfo->riwayat_mrsa}}" name="riwayat_mrsa"
-                          @if(($cinfo->riwayat_mrsa)==1) checked @endif>
+                          <input type="checkbox" value="{{ ('riwayat_msrsa') ?? $cinfo->riwayat_msrsa}}" name="riwayat_msrsa"
+                          @if(($cinfo->riwayat_msrsa)==1) checked @endif>
                           Riwayat MRSA (+)/ESBL(+)/VRE(+)
                         </label>
                     </div>

@@ -52,7 +52,7 @@ class ClinicalinfoController extends Controller
         $cinfo->diabetik = $request->diabetik ? 1 : 0 ?? 0;
         $cinfo->pid = $request->pid ? 1 : 0 ?? 0;
         $cinfo->alergi_penicilin = $request->alergi_penicilin ? 1 : 0 ?? 0;
-        $cinfo->riwayat_msrsa = $request->riwayat_mrsa ? 1 : 0 ?? 0;
+        $cinfo->riwayat_msrsa = $request->riwayat_msrsa ? 1 : 0 ?? 0;
         $cinfo->gejala_isk = $request->gejala_isk ? 1 : 0 ?? 0;
         $cinfo->id_pasien = $request->id_pasien;
         $cinfo->save();
@@ -107,7 +107,7 @@ class ClinicalinfoController extends Controller
         $cinfo->diabetik = $request->diabetik ? 1 : 0 ?? 0;
         $cinfo->pid = $request->pid ? 1 : 0 ?? 0;
         $cinfo->alergi_penicilin = $request->alergi_penicilin ? 1 : 0 ?? 0;
-        $cinfo->riwayat_msrsa = $request->riwayat_mrsa ? 1 : 0 ?? 0;
+        $cinfo->riwayat_msrsa = $request->riwayat_msrsa ? 1 : 0 ?? 0;
         $cinfo->gejala_isk = $request->gejala_isk ? 1 : 0 ?? 0;
         $cinfo->id_pasien = $request->id_pasien;
         $cinfo->save();
