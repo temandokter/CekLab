@@ -20,6 +20,7 @@ use App\Http\Controllers\PatientController;
 Route::prefix('/')->middleware('auth')->group(function () {
     Route::resource('/','PatientController');
     Route::resource('patient','PatientController');
+    Route::resource('employee','EmployeeController');
 });
 
 Auth::routes();
