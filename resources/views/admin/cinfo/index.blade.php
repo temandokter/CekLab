@@ -27,7 +27,7 @@
               <th>Alergi Penicilin</th>
               <th>RIwayat M E V</th>
               <th>Gejala ISK</th>
-              {{-- <th>Nama Dokter</th> --}}
+              <th>Nama Pasien</th>
               <th>Edit</th>
               <th>Hapus</th>
             </tr>
@@ -45,9 +45,12 @@
               <td>@if(($cinfo->alergi_penicilin)==1) pos(+) @else neg(-) @endif</td>
               <td>@if(($cinfo->riwayat_msrsa)==1) pos(+) @else neg(-) @endif</td>
               <td>@if(($cinfo->gejala_isk)==1) pos(+) @else neg(-) @endif</td>
-              {{-- <td>{{ $cinfo->doctor->nama_dokter }}</td> --}}
+              <td>{{ $cinfo->patient->nama_pasien }}</td>
               <td>
-                <a href="{{ route('admin.cinfo.edit', $cinfo->id) }}">Edit</a>
+                <a class="btn btn-block btn-warning btn-sm" href="{{ route('admin.cinfo.edit', $cinfo->id) }}">
+                  <i class="fa fa-edit"></i>
+                </a>
+                
               </td>
               <td><form action="{{ route('admin.cinfo.destroy', $cinfo->id) }}" method="POST">
                 @method("DELETE")

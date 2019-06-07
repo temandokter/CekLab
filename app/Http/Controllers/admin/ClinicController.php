@@ -52,7 +52,7 @@ class ClinicController extends Controller
         $clinic->nama_klinik = $request->nama_klinik;
         $clinic->slug = str_slug($request->nama_klinik);
         $clinic->alamat_klinik = $request->alamat_klinik;
-        $clinic->id_dokter = $request->id_dokter;
+        $clinic->doctor_id = $request->doctor_id;
         $clinic->save();
 
         return redirect()->route('admin.clinic.index')->withSuccess('Berhasil ditambahkan');
@@ -107,7 +107,7 @@ class ClinicController extends Controller
         $clinic->nama_klinik = $request->nama_klinik;
         $clinic->slug = str_slug($request->nama_klinik);
         $clinic->alamat_klinik = $request->alamat_klinik;
-        $clinic->id_dokter = $request->id_dokter;
+        $clinic->doctor_id = $request->doctor_id;
         $clinic->save();
 
         return redirect()->route('admin.clinic.index')->withSuccess('Berhasil ditambahkan');

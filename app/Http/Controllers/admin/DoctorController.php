@@ -58,7 +58,7 @@ class DoctorController extends Controller
         $doctor->alamat_klinik = $request->alamat_klinik;
         $doctor->no_hp = $request->no_hp;
         $doctor->email = $request->email;
-        $doctor->id_pasien = $request->id_pasien;
+        $doctor->patient_id = $request->patient_id;
         $doctor->save();
 
         
@@ -123,7 +123,7 @@ class DoctorController extends Controller
         $doctor->alamat_klinik = $request->alamat_klinik;
         $doctor->no_hp = $request->no_hp;
         $doctor->email = $request->email;
-        $doctor->id_pasien = $request->id_pasien;
+        $doctor->patient_id = $request->patient_id;
         $doctor->save();
 
         

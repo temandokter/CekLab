@@ -19,8 +19,6 @@ class CreateCeklabTable extends Migration
             $table->string('slug')->nullable()->default(null);
             $table->unsignedBigInteger('id_klinik');
             $table->timestamps();
-
-            $table->foreign('id_klinik')->references('id')->on('clinics');
         });
     }
 

@@ -18,7 +18,7 @@
             <tr>
               <th>Nama Klinik</th>
               <th>Alamat Klinik</th>
-              {{-- <th>Nama Dokter</th> --}}
+              <th>Nama Dokter</th>
               <th>Edit</th>
               <th>Hapus</th>
             </tr>
@@ -28,11 +28,11 @@
             <tr>
               <td>{{ $clinic->nama_klinik }}</td>
               <td>{{ $clinic->alamat_klinik }}</td>
-              {{-- <td>{{ $clinic->doctor->nama_dokter }}</td> --}}
+              <td>{{ $clinic->doctor->nama_dokter }}</td>
               <td>
                 <a href="{{ route('admin.clinic.edit', $clinic->id) }}">Edit</a>
               </td>
-              <td><form action="{{ route('admin.clinic.destroy', $clinic->id) }}" method="POST">
+              <td><form action="{{ route('admin.clinic.destroy', $clinic) }}" method="POST">
                 @method("DELETE")
                 @csrf
                 <input type="submit" value="Hapus" class="btn btn-danger">

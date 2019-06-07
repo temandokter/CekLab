@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class AddIdPasienOnDokter extends Migration
+class AddIdForeignKeyOnCheckLabs extends Migration
 {
     /**
      * Run the migrations.
@@ -13,8 +13,8 @@ class AddIdPasienOnDokter extends Migration
      */
     public function up()
     {
-        Schema::table('doctors', function (Blueprint $table) {
-            $table->unsignedBigInteger('id_pasien')->after('email');
+        Schema::table('check_labs', function (Blueprint $table) {
+            $table->foreign('clinics_id')->references('id')->on('clinics')->onUpdate('CASCADE')->onDelete('CASCADE');
         });
     }
 
@@ -25,9 +25,8 @@ class AddIdPasienOnDokter extends Migration
      */
     public function down()
     {
-        Schema::table('doctors', function (Blueprint $table) {
-            $table->dropForeign(['id_pasien']);
-            $table->dropColumn('id_pasien');
+        Schema::table('check_labs', function (Blueprint $table) {
+            //
         });
     }
 }

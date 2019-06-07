@@ -54,7 +54,7 @@
   
               <div class="form-group col-md-6">
                   <label for="id_pasien">Pasien</label>
-                  <select name="id_pasien" class="form-control">
+                  <select name="patient_id" class="form-control">
                     {{ $patients = Patient::get() }}
                     @foreach ($patients as $patient)
                       <option value="{{ $patient->id }}">{{ $patient->nama_pasien }}</option>                      

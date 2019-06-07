@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class AddIdPasienOnDokter extends Migration
+class RenameIdPasienOnCinfo extends Migration
 {
     /**
      * Run the migrations.
@@ -13,8 +13,10 @@ class AddIdPasienOnDokter extends Migration
      */
     public function up()
     {
-        Schema::table('doctors', function (Blueprint $table) {
-            $table->unsignedBigInteger('id_pasien')->after('email');
+        Schema::table('clinical_infos', function (Blueprint $table) {
+            $table->renameColumn('id_pasien', 'patients_id');
+
+
         });
     }
 
@@ -25,9 +27,8 @@ class AddIdPasienOnDokter extends Migration
      */
     public function down()
     {
-        Schema::table('doctors', function (Blueprint $table) {
-            $table->dropForeign(['id_pasien']);
-            $table->dropColumn('id_pasien');
+        Schema::table('clinical_infos', function (Blueprint $table) {
+            //
         });
     }
 }

@@ -21,7 +21,7 @@
               <th>Alamat Klinik</th>
               <th>No HP</th>
               <th>Email</th>
-              {{-- <th>Nama Pasien</th> --}}
+              <th>Nama Pasien</th>
               <th>Edit</th>
               <th>Hapus</th>
             </tr>
@@ -34,7 +34,7 @@
               <td>{{ $doctor->alamat_klinik }}</td>
               <td>{{ $doctor->no_hp }}</td>
               <td>{{ $doctor->email }}</td>
-              {{-- <td>{{ $doctor->patient->nama_pasien }}</td> --}}
+              <td>{{ $doctor->patient->nama_pasien }}</td>
               <td>
                 <a href="{{ route('admin.doctor.edit', $doctor->id) }}">Edit</a>
               </td>

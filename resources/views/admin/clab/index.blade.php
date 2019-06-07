@@ -17,7 +17,7 @@
             <thead>
             <tr>
               <th>Nama Lab</th>
-              {{-- <th>Nama Dokter</th> --}}
+              <th>Nama Dokter</th>
               <th>Edit</th>
               <th>Hapus</th>
             </tr>
@@ -26,7 +26,7 @@
               @foreach ($clabs as $clab)
             <tr>
               <td>{{ $clab->nama_lab }}</td>
-              {{-- <td>{{ $clab->doctor->nama_dokter }}</td> --}}
+              <td>{{ $clab->doctor->nama_dokter }}</td>
               <td>
                 <a href="{{ route('admin.clab.edit', $clab->id) }}">Edit</a>
               </td>
