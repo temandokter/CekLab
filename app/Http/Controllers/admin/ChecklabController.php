@@ -50,7 +50,7 @@ class ChecklabController extends Controller
         $clab = new Check_labs;
         $clab->nama_lab = $request->nama_lab;
         $clab->slug = str_slug($request->nama_lab);
-        $clab->id_klinik = $request->id_klinik;
+        $clab->clinic_id = $request->clinic_id;
         $clab->save();
 
         return redirect()->route('admin.clab.index')->withSuccess('Berhasil ditambahkan');
@@ -103,7 +103,7 @@ class ChecklabController extends Controller
         $clab = Check_labs::find($id);
         $clab->nama_lab = $request->nama_lab;
         $clab->slug = str_slug($request->nama_lab);
-        $clab->id_klinik = $request->id_klinik;
+        $clab->clinic_id = $request->clinic_id;
         $clab->save();
 
         return redirect()->route('admin.clab.index')->withSuccess('Berhasil ditambahkan');

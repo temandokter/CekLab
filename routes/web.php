@@ -28,6 +28,8 @@ Route::prefix('admin')->middleware('auth')->name('admin.')->group(function () {
     Route::resource('clinic','admin\ClinicController');
     Route::resource('clab','admin\ChecklabController');
     Route::resource('cinfo','admin\ClinicalinfoController');
+
+    Route::get('clinic/{clinic}/doctor','admin\ClinicDoctorController@index')->name('doctor.clinic');
     
 });
 

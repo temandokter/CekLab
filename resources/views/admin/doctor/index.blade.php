@@ -29,7 +29,7 @@
               @foreach ($doctors as $doctor)
             <tr>
               <td>{{ $doctor->nama_dokter }}</td>
-              <td>{{ $doctor->clinic->nama_klinik }}</td>
+              <td><a href="{{ route('admin.doctor.clinic',$doctor->clinic) }}">{{ $doctor->clinic->nama_klinik }}</a></td>
               <td>{{ $doctor->no_hp }}</td>
               <td>{{ $doctor->email }}</td>
               <td>{{ $doctor->patient->nama_pasien }}</td>
