@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class AddIdPasienOnDokter extends Migration
+class RemoveColumnOnDoctors extends Migration
 {
     /**
      * Run the migrations.
@@ -14,7 +14,7 @@ class AddIdPasienOnDokter extends Migration
     public function up()
     {
         Schema::table('doctors', function (Blueprint $table) {
-            $table->unsignedBigInteger('id_pasien')->after('email');
+            $table->dropColumn('nama_klinik', 'alamat_klinik');
         });
     }
 
@@ -26,8 +26,7 @@ class AddIdPasienOnDokter extends Migration
     public function down()
     {
         Schema::table('doctors', function (Blueprint $table) {
-            $table->dropForeign(['id_pasien']);
-            $table->dropColumn('id_pasien');
+            //
         });
     }
 }

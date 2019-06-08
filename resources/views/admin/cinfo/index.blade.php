@@ -19,15 +19,14 @@
               <th>Paska Bedah</th>
               <th>Immuno<br>kompro<br>mise</th>
               <th>Penggunaan Ventilator</th>
-              <th>Tranplantasi</th>
-              <th>Kehamilan</th>
+              <th>Trans<br>plan<br>tasi</th>
+              <th>Keha<br>milan</th>
               <th>Diabetik</th>
-              {{-- <th>Pelvic Infammatory Disesase</th> --}}
               <th>PID</th>
               <th>Alergi Penicilin</th>
               <th>RIwayat M E V</th>
               <th>Gejala ISK</th>
-              {{-- <th>Nama Dokter</th> --}}
+              <th>Nama Pasien</th>
               <th>Edit</th>
               <th>Hapus</th>
             </tr>
@@ -35,24 +34,29 @@
             <tbody>
               @foreach ($cinfos as $cinfo)
             <tr>
-              <td>@if(($cinfo->paska_bedah)==1) pos(+) @else neg(-) @endif</td>
-              <td>@if(($cinfo->immunokompromise)==1) pos(+) @else neg(-) @endif</td>
-              <td>@if(($cinfo->ventilator)==1) pos(+) @else neg(-) @endif</td>
-              <td>@if(($cinfo->transplantasi)==1) pos(+) @else neg(-) @endif</td>
-              <td>@if(($cinfo->kehamilan)==1) pos(+) @else neg(-) @endif</td>
-              <td>@if(($cinfo->diabetik)==1) pos(+) @else neg(-) @endif</td>
-              <td>@if(($cinfo->pid)==1) pos(+) @else neg(-) @endif</td>
-              <td>@if(($cinfo->alergi_penicilin)==1) pos(+) @else neg(-) @endif</td>
-              <td>@if(($cinfo->riwayat_msrsa)==1) pos(+) @else neg(-) @endif</td>
-              <td>@if(($cinfo->gejala_isk)==1) pos(+) @else neg(-) @endif</td>
-              {{-- <td>{{ $cinfo->doctor->nama_dokter }}</td> --}}
+              
+              <td>@if(($cinfo->paska_bedah)==1) <span class="label label-primary">pos(+)</span> @else <span class="label label-danger">neg(-)</span> @endif</td>
+              <td>@if(($cinfo->immunokompromise)==1) <span class="label label-primary">pos(+)</span> @else <span class="label label-danger">neg(-)</span> @endif</td>
+              <td>@if(($cinfo->ventilator)==1) <span class="label label-primary">pos(+)</span> @else <span class="label label-danger">neg(-)</span> @endif</td>
+              <td>@if(($cinfo->transplantasi)==1) <span class="label label-primary">pos(+)</span> @else <span class="label label-danger">neg(-)</span> @endif</td>
+              <td>@if(($cinfo->kehamilan)==1) <span class="label label-primary">pos(+)</span> @else <span class="label label-danger">neg(-)</span> @endif</td>
+              <td>@if(($cinfo->diabetik)==1) <span class="label label-primary">pos(+)</span> @else <span class="label label-danger">neg(-)</span> @endif</td>
+              <td>@if(($cinfo->pid)==1) <span class="label label-primary">pos(+)</span> @else <span class="label label-danger">neg(-)</span> @endif</td>
+              <td>@if(($cinfo->alergi_penicilin)==1) <span class="label label-primary">pos(+)</span> @else <span class="label label-danger">neg(-)</span> @endif</td>
+              <td>@if(($cinfo->riwayat_msrsa)==1) <span class="label label-primary">pos(+)</span> @else <span class="label label-danger">neg(-)</span> @endif</td>
+              <td>@if(($cinfo->gejala_isk)==1) <span class="label label-primary">pos(+)</span> @else <span class="label label-danger">neg(-)</span> @endif</td>
+              <td>{{ $cinfo->patient->nama_pasien }}</td>
               <td>
-                <a href="{{ route('admin.cinfo.edit', $cinfo->id) }}">Edit</a>
+                <a class="btn btn-block btn-warning btn-sm" href="{{ route('admin.cinfo.edit', $cinfo->id) }}">
+                  <i class="fa fa-edit"></i>
+                </a>
               </td>
               <td><form action="{{ route('admin.cinfo.destroy', $cinfo->id) }}" method="POST">
                 @method("DELETE")
                 @csrf
-                <input type="submit" value="Hapus" class="btn btn-danger">
+                <button type="submit" class="btn btn-block btn-danger btn-sm">
+                <i class="fa fa-trash"></i>
+                </button>
               </td>
             </form>
             </tr>

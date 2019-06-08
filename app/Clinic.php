@@ -8,7 +8,7 @@ class Clinic extends Model
 {
     public function doctor()
     {
-        return $this->belongsToMany(Doctor::class);
+        return $this->hasMany(Doctor::class);
     }
     public function check_lab()
     {

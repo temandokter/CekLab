@@ -5,36 +5,33 @@
     <div class="col-xs-12">
       <div class="box">
         <div class="box-header">
-          <h3 class="box-title">Data Lab</h3>
+          <h3 class="box-title">Data Dokter</h3>
           <div class="card-header">
-              <a href=" {{ route('admin.clab.create') }}" class="btn btn-primary">Tambahkan Lab</a>
+              <a href=" {{ route('admin.doctor.create') }}" class="btn btn-primary">Tambahkan Dokter</a>
           </div>
         </div>
         
         <!-- /.box-header -->
         <div class="box-body">
+            <h1>Dokter dengan klinik {{ $clinic->nama_klinik }}</h1>
           <table id="example1" class="table table-bordered table-striped">
             <thead>
             <tr>
-              <th>Nama Lab</th>
+              <th>Nama Dokter</th>
               <th>Nama Klinik</th>
-              <th>Edit</th>
-              <th>Hapus</th>
+              <th>Alamat Klinik</th>
+              <th>No HP</th>
+              <th>Email</th>
             </tr>
             </thead>
             <tbody>
-              @foreach ($clabs as $clab)
+              @foreach ($doctors as $doctor)
             <tr>
-              <td>{{ $clab->nama_lab }}</td>
-              <td>{{ $clab->clinic->nama_klinik }}</td>
-              <td>
-                <a href="{{ route('admin.clab.edit', $clab->id) }}">Edit</a>
-              </td>
-              <td><form action="{{ route('admin.clab.destroy', $clab->id) }}" method="POST">
-                @method("DELETE")
-                @csrf
-                <input type="submit" value="Hapus" class="btn btn-danger">
-              </td>
+              <td>{{ $doctor->nama_dokter }}</td>
+              <td>{{ $doctor->clinic->nama_klinik }}</td>
+              <td>{{ $doctor->clinic->alamat_klinik }}</td>
+              <td>{{ $doctor->no_hp }}</td>
+              <td>{{ $doctor->email }}</td>
             </form>
             </tr>
             @endforeach

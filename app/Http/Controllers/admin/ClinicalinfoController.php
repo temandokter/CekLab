@@ -1,8 +1,8 @@
 <?php
 
 namespace App\Http\Controllers\admin;
-use App\Clinical_infos;
 use App\Patient;
+use App\Clinical_infos;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
@@ -15,6 +15,7 @@ class ClinicalinfoController extends Controller
      */
     public function index()
     {
+        
         $cinfos = Clinical_infos::latest()->paginate(10);
         return view('admin.cinfo.index',
         ['cinfos'=>$cinfos,]);
@@ -54,7 +55,7 @@ class ClinicalinfoController extends Controller
         $cinfo->alergi_penicilin = $request->alergi_penicilin ? 1 : 0 ?? 0;
         $cinfo->riwayat_msrsa = $request->riwayat_msrsa ? 1 : 0 ?? 0;
         $cinfo->gejala_isk = $request->gejala_isk ? 1 : 0 ?? 0;
-        $cinfo->id_pasien = $request->id_pasien;
+        $cinfo->patient_id = $request->patient_id;
         $cinfo->save();
 
         return redirect()->route('admin.cinfo.index')->withSuccess('Berhasil ditambahkan');
@@ -109,7 +110,7 @@ class ClinicalinfoController extends Controller
         $cinfo->alergi_penicilin = $request->alergi_penicilin ? 1 : 0 ?? 0;
         $cinfo->riwayat_msrsa = $request->riwayat_msrsa ? 1 : 0 ?? 0;
         $cinfo->gejala_isk = $request->gejala_isk ? 1 : 0 ?? 0;
-        $cinfo->id_pasien = $request->id_pasien;
+        $cinfo->patient_id = $request->patient_id;
         $cinfo->save();
 
         return redirect()->route('admin.cinfo.index')->withSuccess('Berhasil ditambahkan');
