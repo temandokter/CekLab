@@ -12,7 +12,7 @@ class Doctor extends Model
     }
     public function clinic()
     {
-        return $this->hasMany(Clinic::class);
+        return $this->belongsTo(Clinic::class);
     }
     public function getRouteKeyName()
     {

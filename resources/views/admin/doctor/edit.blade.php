@@ -1,4 +1,5 @@
-<?php use App\Patient; ?>
+<?php use App\Patient;
+use App\Clinic; ?>
 @extends('templates.default')
 
 @section('content')
@@ -24,20 +25,6 @@
             </div>
               </div>
               <div class="form-group col-md-6">
-                <label for="nama_klinik">Nama Klinik</label>
-                <input type="text" class="form-control {{ $errors->has('nama_klinik') ? 'is-invalid' : '' }}" name="nama_klinik" placeholder="Masukkan Nama Klinik" value="{{ old('nama_klinik')??$doctor->nama_klinik}}">
-                <div class="invalid-feedback">
-                    {{ $errors->first('nama_klinik') }}
-            </div>
-              </div>
-              <div class="form-group col-md-6">
-                <label for="alamat_klinik">Alamat Klinik</label>
-                <input type="text" class="form-control {{ $errors->has('alamat_klinik') ? 'is-invalid' : '' }}" name="alamat_klinik"  value="{{ old('alamat_klinik')?? $doctor->alamat_klinik}}" placeholder="Masukkan Alama Klinik">
-                <div class="invalid-feedback">
-                    {{ $errors->first('alamat_klinik') }}
-            </div>
-              </div>
-              <div class="form-group col-md-6">
                 <label for="no_hp">No HP</label>
                 <input type="text" class="form-control {{ $errors->has('no_hp') ? 'is-invalid' : '' }}" name="no_hp" placeholder="Masukkan No HP" value="{{ old('no_hp')??$doctor->no_hp}}">
                 <div class="invalid-feedback">
@@ -51,7 +38,15 @@
                     {{ $errors->first('email') }}
             </div>
               </div>
-  
+              <div class="form-group col-md-6">
+                  <label for="clinic_id">Klinik</label>
+                  <select name="clinic_id" class="form-control">
+                      {{ $clinics = Clinic::get() }}
+                    @foreach ($clinics as $clinic)
+                      <option value="{{ $clinic->id }}">{{ $clinic->nama_klinik }}</option>                      
+                    @endforeach
+                  </select>
+              </div>
               <div class="form-group col-md-6">
                   <label for="id_pasien">Pasien</label>
                   <select name="patient_id" class="form-control">

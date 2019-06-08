@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\admin;
 use App\Doctor;
 use App\Patient;
+use App\Clinic;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
@@ -28,8 +29,10 @@ class DoctorController extends Controller
     public function create()
     {
         $patients = Patient::get();
+        $clinics = Clinic::get();
         return view('admin.doctor.create',[
             'patients'=>$patients,
+        ],['clinics'=>$clinics,
         ]);
     }
 
@@ -43,8 +46,6 @@ class DoctorController extends Controller
     {
         $this->validate($request, [
             'nama_dokter' => 'required|min:3',
-            'nama_klinik' => 'required',
-            'alamat_klinik' => 'required',
             'no_hp' => 'required',
             'email' => 'required|min:3'
         ],[
@@ -54,11 +55,10 @@ class DoctorController extends Controller
         $doctor = new Doctor;
         $doctor->nama_dokter = $request->nama_dokter;
         $doctor->slug = str_slug($request->nama_dokter);
-        $doctor->nama_klinik = $request->nama_klinik;
-        $doctor->alamat_klinik = $request->alamat_klinik;
         $doctor->no_hp = $request->no_hp;
         $doctor->email = $request->email;
         $doctor->patient_id = $request->patient_id;
+        $doctor->clinic_id = $request->clinic_id;
         $doctor->save();
 
         
@@ -108,8 +108,6 @@ class DoctorController extends Controller
     {
         $this->validate($request, [
             'nama_dokter' => 'required|min:3',
-            'nama_klinik' => 'required',
-            'alamat_klinik' => 'required',
             'no_hp' => 'required',
             'email' => 'required|min:3'
         ],[
@@ -119,11 +117,10 @@ class DoctorController extends Controller
         $doctor = Doctor::find($id);
         $doctor->nama_dokter = $request->nama_dokter;
         $doctor->slug = str_slug($request->nama_dokter);
-        $doctor->nama_klinik = $request->nama_klinik;
-        $doctor->alamat_klinik = $request->alamat_klinik;
         $doctor->no_hp = $request->no_hp;
         $doctor->email = $request->email;
         $doctor->patient_id = $request->patient_id;
+        $doctor->clinic_id = $request->clinic_id;
         $doctor->save();
 
         

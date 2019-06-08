@@ -22,7 +22,6 @@
               <th>Trans<br>plan<br>tasi</th>
               <th>Keha<br>milan</th>
               <th>Diabetik</th>
-              {{-- <th>Pelvic Infammatory Disesase</th> --}}
               <th>PID</th>
               <th>Alergi Penicilin</th>
               <th>RIwayat M E V</th>

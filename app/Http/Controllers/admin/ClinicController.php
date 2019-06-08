@@ -27,9 +27,9 @@ class ClinicController extends Controller
      */
     public function create()
     {
-        $doctors = Doctor::get();
+        $clinics = Clinic::get();
         return view('admin.clinic.create',[
-            'doctors'=>$doctors,
+            'clinics'=>$clinics,
         ]);
     }
 
@@ -52,7 +52,6 @@ class ClinicController extends Controller
         $clinic->nama_klinik = $request->nama_klinik;
         $clinic->slug = str_slug($request->nama_klinik);
         $clinic->alamat_klinik = $request->alamat_klinik;
-        $clinic->doctor_id = $request->doctor_id;
         $clinic->save();
 
         return redirect()->route('admin.clinic.index')->withSuccess('Berhasil ditambahkan');
@@ -107,7 +106,6 @@ class ClinicController extends Controller
         $clinic->nama_klinik = $request->nama_klinik;
         $clinic->slug = str_slug($request->nama_klinik);
         $clinic->alamat_klinik = $request->alamat_klinik;
-        $clinic->doctor_id = $request->doctor_id;
         $clinic->save();
 
         return redirect()->route('admin.clinic.index')->withSuccess('Berhasil ditambahkan');

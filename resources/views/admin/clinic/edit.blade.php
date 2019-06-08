@@ -30,16 +30,6 @@
                     {{ $errors->first('alamat_klinik') }}
             </div>
               </div>
-              
-              <div class="form-group col-md-6">
-                  <label for="id_dokter">Dokter</label>
-                  <select name="doctor_id" class="form-control">
-                    {{ $doctors = Doctor::get() }}
-                    @foreach ($doctors as $doctor)
-                      <option value="{{ $doctor->id }}">{{ $doctor->nama_dokter }}</option>                      
-                    @endforeach
-                  </select>
-              </div>
             </div>
             <!-- /.box-body -->
 
