@@ -20,6 +20,9 @@ use App\Http\Controllers\admin\DoctorController;
 */
 Route::get('/','PatientController@index');
 
+
+Auth::routes();
+
 // <<<<<<< HEAD
 Route::prefix('admin')->middleware('auth')->name('admin.')->group(function () {
     Route::resource('/','HomeController');
@@ -28,6 +31,7 @@ Route::prefix('admin')->middleware('auth')->name('admin.')->group(function () {
     Route::resource('date_spesimen','admin/Date_SpesimenController');
     Route::resource('officer_confirmation','admin/Officer_ConfirmationController');
 // =======
+});
 
 Route::prefix('admin')->middleware('auth')->name('admin.')->group(function () {
     Route::resource('/','HomeController');
@@ -37,9 +41,7 @@ Route::prefix('admin')->middleware('auth')->name('admin.')->group(function () {
     Route::resource('clab','admin\ChecklabController');
     Route::resource('cinfo','admin\ClinicalinfoController');
     
-// >>>>>>> cd6075ba497f24bcacb39d7554c4d2be7438fe1c
-});
 
-Auth::routes();
+});
 
 Route::get('/{post}', 'PostController@show')->name('show');
