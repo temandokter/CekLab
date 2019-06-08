@@ -1,5 +1,9 @@
 @extends('templates.default')
 
 @section('content')
-    <p>hello world</p>
+@if (session('status'))
+<div class="alert alert-success" role="alert">
+    {{ session('status') }}
+</div>
+@endif
 @endsection
