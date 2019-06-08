@@ -44,7 +44,7 @@
   <![endif]-->
 
   <!-- Google Font -->
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
+  {{-- <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic"> --}}
 </head>
 <body class="hold-transition skin-blue sidebar-mini">
 <div class="wrapper">
@@ -58,17 +58,6 @@
 
   <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
-    <!-- Content Header (Page header) -->
-    <section class="content-header">
-      <h1>
-        Dashboard
-        <small>Control panel</small>
-      </h1>
-      <ol class="breadcrumb">
-        <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-        <li class="active">Dashboard</li>
-      </ol>
-    </section>
 
     <!-- Main content -->
     <section class="content">
@@ -113,7 +102,7 @@
 <script src="{{ asset('assets/plugins/input-mask/jquery.inputmask.js')}}"></script>
 <script src="{{ asset('assets/plugins/input-mask/jquery.inputmask.date.extensions.js')}}"></script>
 <script src="{{ asset('assets/plugins/input-mask/jquery.inputmask.extensions.js')}}"></script>
-<script src="{{ asset('bower_components/select2/dist/js/select2.full.min.js')}}"></script>
+<script src="{{ asset('assets/bower_components/select2/dist/js/select2.full.min.js')}}"></script>
 <!-- daterangepicker -->
 <script src="{{ asset('assets/bower_components/moment/min/moment.min.js')}}"></script>
 <script src="{{ asset('assets/bower_components/bootstrap-daterangepicker/daterangepicker.js')}}"></script>
@@ -150,9 +139,17 @@
         'autoWidth'   : false
       })
     })
-  </script>
-  <script>
+    function tanggal(){
+      let input = $("#datepicker").val() 
+      let pisah = input.split("/") 
+      let mentah = pisah[2]+"-"+pisah[0]+"-"+pisah[1]
+      // console.log(mentah)
+      const getAge = birthDate => Math.floor((new Date() - new Date(birthDate).getTime()) / 3.15576e+10)
+
+      $("#umur").val(getAge(mentah))
+    }
       $(function () {
+        
         //Initialize Select2 Elements
         $('.select2').select2()
     
@@ -190,6 +187,7 @@
         $('#datepicker').datepicker({
           autoclose: true
         })
+        $('#datepicker').datepicker('yyyy/mm/dd')
     
         //iCheck for checkbox and radio inputs
         $('input[type="checkbox"].minimal, input[type="radio"].minimal').iCheck({

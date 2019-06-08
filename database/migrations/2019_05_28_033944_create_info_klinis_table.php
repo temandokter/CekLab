@@ -21,7 +21,7 @@ class CreateInfoKlinisTable extends Migration
             $table->unsignedBigInteger('id_pasien');
             $table->timestamps();
 
-            $table->foreign('id_pasien')->references('id_pasien')->on('patients');
+            $table->foreign('id_pasien')->references('id')->on('patients');
         });
     }
 

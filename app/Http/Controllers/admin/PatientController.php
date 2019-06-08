@@ -1,8 +1,10 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\admin;
+use App\Http\Controllers\Controller;
 use App\Patient;
 use Illuminate\Http\Request;
+use Carbon\Carbon;
 
 class PatientController extends Controller
 {
@@ -14,8 +16,8 @@ class PatientController extends Controller
     public function index()
     {
 
-        $patients = Patient::get();
-        return view('index',['patients'=>$patients,]);
+        $patients = Patient::latest()->paginate(10);
+        return view('admin.patient.index',['patients'=>$patients,]);
 
     }
 
@@ -27,7 +29,7 @@ class PatientController extends Controller
     public function create()
     {
         $patients = Patient::get();
-        return view('patient.create',[
+        return view('admin.patient.create',[
             'patient'=>$patients,
         ]);
     }
@@ -40,22 +42,25 @@ class PatientController extends Controller
      */
     public function store(Request $request)
     {
+        // dd(Carbon::create($request->tgl_lahir));
         $this->validate($request, [
-            'nama_pasien' => 'required|min:5',
+            'nama_pasien' => 'required|min:3',
             'no_rm' => 'required',
             'tgl_lahir' => 'required',
             'umur' => 'required',
             'pekerjaan' => 'required|min:3',
             'status' => 'required',
-            'jenkel' => 'required|min:3',
-            'no_antrian' => 'required',
+            'jenkel' => 'required',
+            'no_antrian' => 'required'
+        ],[
+            'required' => 'Atribut harus diisi',
         ]);
 
         $patient = new Patient;
         $patient->nama_pasien = $request->nama_pasien;
-        $patient->slug - str_slug($request->nama_pasien);
+        $patient->slug = str_slug($request->nama_pasien);
         $patient->no_rm = $request->no_rm;
-        $patient->tgl_lahir = $request->tgl_lahir;
+        $patient->tgl_lahir = Carbon::create($request->tgl_lahir);
         $patient->umur = $request->umur;
         $patient->pekerjaan = $request->pekerjaan;
         $patient->status = $request->status;
@@ -63,7 +68,9 @@ class PatientController extends Controller
         $patient->no_antrian = $request->no_antrian;
         $patient->save();
 
-        return redirect()->route('patient.category.index')->withSuccess('Berhasil ditambahkan');
+        
+
+        return redirect()->route('admin.patient.index')->withSuccess('Berhasil ditambahkan');
     }
 
     /**
@@ -75,7 +82,7 @@ class PatientController extends Controller
     public function show($id)
     {
         $patients = Patient::get();
-        return view('patient.show',[
+        return view('admin.patient.index',[
             'patient'=>$patients,
         ]);
     }
@@ -90,7 +97,7 @@ class PatientController extends Controller
     {
         $patient = Patient::find($id);
 
-        return view('patient.edit',[
+        return view('admin.patient.edit',[
             'patient'=>$patient,
         ]);
     }
@@ -118,7 +125,7 @@ class PatientController extends Controller
         $patient = Patient::find($id);
         $patient->nama_pasien = $request->nama_pasien;
         $patient->no_rm = $request->no_rm;
-        $patient->tgl_lahir = $request->tgl_lahir;
+        $patient->tgl_lahir = Carbon::create($request->tgl_lahir);
         $patient->umur = $request->umur;
         $patient->pekerjaan = $request->pekerjaan;
         $patient->status = $request->status;
@@ -126,7 +133,7 @@ class PatientController extends Controller
         $patient->no_antrian = $request->no_antrian;
         $patient->save();
 
-        return redirect()->route('patient.category.index')->withSuccess('Berhasil ditambahkan');
+        return redirect()->route('admin.patient.index')->withSuccess('Berhasil ditambahkan');
     }
 
     /**
@@ -139,6 +146,6 @@ class PatientController extends Controller
     {
         $patient = Patient::find($id);
         $patient->delete();
-        return redirect()->route('patient.index')->with('danger','Berhasil dihapus');
+        return redirect()->route('admin.patient.index')->with('danger','Berhasil dihapus');
     }
 }

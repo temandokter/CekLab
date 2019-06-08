@@ -14,14 +14,14 @@ class CreateKlinikTable extends Migration
     public function up()
     {
         Schema::create('clinics', function (Blueprint $table) {
-            $table->bigIncrements('id_klinik');
+            $table->bigIncrements('id');
             $table->unsignedBigInteger('id_dokter');
             $table->string('nama_klinik');
             $table->string('slug')->nullable()->default(null);
             $table->text('alamat_klinik');
             $table->timestamps();
 
-            $table->foreign('id_dokter')->references('id_dokter')->on('doctors');
+            $table->foreign('id_dokter')->references('id')->on('doctors');
 
 
         });
