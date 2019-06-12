@@ -9,7 +9,7 @@ use App\Http\Controllers\admin\DoctorController;
 // use Symfony\Component\Routing\Annotation\Route;
 
 /*
-|--------------------------------------------------------------------------
+|-------------------------------------------------------------------------
 | Web Routes
 |--------------------------------------------------------------------------
 |
@@ -22,6 +22,7 @@ Route::get('/','PatientController@index');
 
 
 Auth::routes();
+
 
 Route::prefix('admin')->middleware('auth')->name('admin.')->group(function () {
     Route::resource('/','HomeController');
