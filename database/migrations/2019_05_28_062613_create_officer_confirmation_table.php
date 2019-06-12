@@ -18,10 +18,8 @@ class CreateOfficerConfirmationTable extends Migration
             $table->string('nama_pasien');
             $table->DATETIME('tanggal');
             $table->string('slug')->nullable()->default(null);
-            $table->unsignedBigInteger('id_pegawai');
+            // $table->unsignedBigInteger('id_pegawai');
             $table->timestamps();
-
-            $table->foreign('id_pegawai')->references('id')->on('employee');
         });
     }
 

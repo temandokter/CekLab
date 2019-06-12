@@ -5,7 +5,7 @@ use App\Date_Spesimen;
 use Illuminate\Http\Request;
 
 class Date_SpesimenController extends Controller
-{
+{ 
     /**
      * Display a listing of the resource.
      *

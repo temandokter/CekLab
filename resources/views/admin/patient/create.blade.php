@@ -59,7 +59,7 @@
             </div>
             <div class="form-group col-md-6">
               <label for="umur">Umur</label>
-              <input type="text" class="form-control {{ $errors->has('umur') ? 'is-invalid' : '' }}" name="umur" id="umur" value="{{ old('umur')}}">
+              <input type="text" class="form-control {{ $errors->has('umur') ? 'is-invalid' : '' }}" name="umur" id="umur" value="{{ old('umur')}}" readonly>
               <div class="invalid-feedback">
                   {{ $errors->first('umur') }}
           </div>

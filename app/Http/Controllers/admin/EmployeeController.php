@@ -4,7 +4,7 @@ namespace App\Http\Controllers\admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Employee; 
-use Carbon\Carbon;
+// use Carbon\Carbon; 
 
 // use Carbon\Carbon;
 
@@ -12,7 +12,7 @@ class EmployeeController extends Controller
 {
     /**
      * Display a listing of the resource.
-     *
+     * 
      * @return \Illuminate\Http\Response
      */
     public function index()
@@ -31,7 +31,7 @@ class EmployeeController extends Controller
     {
         $employees = Employee::get();
 
-        return view('admin.employee.create',['employees'=>$employees,]);
+        return view('admin.employee.create',['employee'=>$employees,]);
     }
 
     /**
@@ -42,9 +42,8 @@ class EmployeeController extends Controller
      */
     public function store(Request $request)
     {
-        $this->validate(request, [
+        $this->validate($request, [
             'nama_pegawai' => 'required',
-            'slug' => 'required',
             'alamat_pegawai' => 'required',
             'email_pegawai' => 'required',
         ],[
@@ -52,7 +51,7 @@ class EmployeeController extends Controller
         ]);
 
             $employee = new Employee;
-            $employee->nama_pegawai = $request->nama_pegawai;
+            $employee->name_pegawai = $request->nama_pegawai;
             $employee->slug = str_slug($request->nama_pegawai);
             $employee->alamat_pegawai = $request->alamat_pegawai;
             $employee->email_pegawai = $request->email_pegawai;
@@ -69,10 +68,9 @@ class EmployeeController extends Controller
      */
     public function show($id)
     {
-        $employee = Employee::find($id);
-        
+        $employees = Employee::get($id);
         return view('admin.employee.edit',[
-            'employee'=>$employee,
+            'employee'=>$employees,
         ]);
     }
 
@@ -82,11 +80,11 @@ class EmployeeController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Employee $employee)
+    public function edit($id)
     {
-        // $employees = Employee::all();
+        $employee = Employee::find($id);
 
-        return view('admin.employee.edit', compact('employee'));
+        return view('admin.employee.edit', ['employee' => $employee]);
     }
 
     /**
@@ -96,13 +94,19 @@ class EmployeeController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Employee $employee)
+    public function update(Request $request, $id)
     {
-        $category->update([
-            'nama_pegawai' => request('nama_pegawai'),
-            'alamat_pegawai' => request('alamat_pegawai'),
-            'email_pegawai' => request('email_pegawai'),
+        $this->validate($request, [
+            'nama_pegawai' => 'required',
+            'alamat_pegawai' => 'required',
+            'email_pegawai' => 'required',
         ]);
+
+        $employee = Employee::find($id);
+        $employee->name_pegawai = $request->nama_pegawai;
+        $employee->alamat_pegawai = $request->alamat_pegawai;
+        $employee->email_pegawai = $request->email_pegawai;
+        $employee->save();
 
         return redirect()->route('admin.employee.index')->withSuccess('Data Berhasil Update');
     }
@@ -113,10 +117,10 @@ class EmployeeController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Employee $employee)
+    public function destroy($id)
     {
+        $employee = Employee::find($id);
         $employee->delete();
-
-        return redirect()->route('admin.employee.index');
+        return redirect()->route('admin.employee.index')->with('danger','Berhasil Dihapus');
     }
 }

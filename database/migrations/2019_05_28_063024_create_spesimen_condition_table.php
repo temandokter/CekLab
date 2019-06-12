@@ -18,10 +18,10 @@ class CreateSpesimenConditionTable extends Migration
             $table->string('kondisi');
             $table->string('pilihan');
             $table->string('slug')->nullable()->default(null);
-            $table->unsignedBigInteger('id_pegawai');
+            // $table->unsignedBigInteger('id_pegawai');
             $table->timestamps();
 
-            $table->foreign('id_pegawai')->references('id')->on('employee');
+            // $table->foreign('id_pegawai')->references('id')->on('employee');
         });
     }
 
