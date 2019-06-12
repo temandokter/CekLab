@@ -5,10 +5,7 @@
     <div class="col-xs-12">
       <div class="box">
         <div class="box-header">
-          <h3 class="box-title">Data Dokter</h3>
-          <div class="card-header">
-              <a href=" {{ route('admin.doctor.create') }}" class="btn btn-primary">Tambahkan Dokter</a>
-          </div>
+          <h3 class="box-title">Data Dokter</h3>          
         </div>
         
         <!-- /.box-header -->

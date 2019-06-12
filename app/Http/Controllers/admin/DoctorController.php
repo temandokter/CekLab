@@ -63,7 +63,7 @@ class DoctorController extends Controller
 
         
 
-        return redirect()->route('admin.doctor.index')->withSuccess('Berhasil ditambahkan');
+        return redirect()->route('admin.cinfo.create')->withSuccess('Berhasil ditambahkan');
 
     }
 

@@ -6,9 +6,6 @@
       <div class="box">
         <div class="box-header"> 
           <h3 class="box-title">Data Pasien</h3>
-          <div class="card-header">
-              <a href=" {{ route('admin.patient.create') }}" class="btn btn-primary">Tambahkan Pasien</a>
-          </div>
         </div>
         
         <!-- /.box-header -->
