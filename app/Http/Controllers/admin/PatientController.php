@@ -70,7 +70,7 @@ class PatientController extends Controller
 
         
 
-        return redirect()->route('admin.patient.index')->withSuccess('Berhasil ditambahkan');
+        return redirect()->route('admin.doctor.create')->withSuccess('Berhasil ditambahkan');
     }
 
     /**

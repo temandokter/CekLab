@@ -6,9 +6,6 @@
       <div class="box">
         <div class="box-header">
           <h3 class="box-title">Data Info Klinis</h3>
-          <div class="card-header">
-              <a href=" {{ route('admin.cinfo.create') }}" class="btn btn-primary">Tambahkan Info Klinis</a>
-          </div>
         </div>
         
         <!-- /.box-header -->
