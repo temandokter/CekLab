@@ -66,8 +66,8 @@
                 <ul class="treeview-menu">
                   <li><a href="{{ route('admin.employee.index') }}"><i class="fa fa-circle-o"></i> Pegawai</a></li>
                   <li><a href="{{ route('admin.date_spesimen.index') }}"><i class="fa fa-circle-o"></i> Tanggal Spesimen</a></li>
-                  <li><a href="{{ route('admin.spesimen_condition.index') }"><i class="fa fa-circle-o"></i> Kondisi Spesimen</a></li>
-                  <li><a href="{{ route('admin.officer_confirmation.index') }"><i class="fa fa-circle-o"></i> Konfirmasi Petugas</a></li>
+                  <li><a href="{{ route('admin.spesimen_condition.index') }}"><i class="fa fa-circle-o"></i> Kondisi Spesimen</a></li>
+                  <li><a href="{{ route('admin.officer_confirmation.index') }}"><i class="fa fa-circle-o"></i> Konfirmasi Petugas</a></li>
                 </ul>
               </li>
             <li>
