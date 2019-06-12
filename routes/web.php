@@ -25,13 +25,15 @@ Auth::routes();
 
 // <<<<<<< HEAD   
 Route::prefix('admin')->middleware('auth')->name('admin.')->group(function () {
-    Route::resource('/','HomeController');
-    Route::resource('employee','admin\EmployeeController');
-    Route::resource('spesimen_condition','admin/Spesimen_ConditionController');
-    Route::resource('date_spesimen','admin/Date_SpesimenController');
-    Route::resource('officer_confirmation','admin/Officer_ConfirmationController');
+    // Route::resource('/','HomeController');
+    // Route::resource('employee','admin\EmployeeController');
+    // Route::resource('spesimen_condition','admin/Spesimen_ConditionController');
+    // Route::resource('date_spesimen','admin/Date_SpesimenController');
+    // Route::resource('officer_confirmation','admin/Officer_ConfirmationController');
 // =======
 });
+
+
 
 Route::prefix('admin')->middleware('auth')->name('admin.')->group(function () {
     Route::resource('/','HomeController');

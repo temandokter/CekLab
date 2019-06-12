@@ -7,7 +7,7 @@
         <div class="box-header">
           <h3 class="box-title">Data Pegawai</h3>
           <div class="card-header">
-              <a href=" {{ route('admin.employee.create') }}" class="btn btn-primary">Tambahkan Pegawai</a>
+              <a href=" {{ route('admin.employee.create') }}" class="btn btn-primary">Tambahkan Pegawai</a> 
           </div>
         </div>
         

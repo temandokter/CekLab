@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers\admin;
 use App\Http\Controllers\Controller;
-use App\Employee;
 use Illuminate\Http\Request;
+use App\Employee; 
 use Carbon\Carbon;
+
+// use Carbon\Carbon;
 
 class EmployeeController extends Controller
 {
@@ -15,7 +17,6 @@ class EmployeeController extends Controller
      */
     public function index()
     {
-
         $employees = Employee::latest()->paginate(10);
         return view('admin.employee.index',['employees'=>$employees,]);
 
@@ -29,9 +30,8 @@ class EmployeeController extends Controller
     public function create()
     {
         $employees = Employee::get();
-        return view('admin.employee.create',[
-            'employee'=>$employees,
-        ]);
+
+        return view('admin.employee.create',['employees'=>$employees,]);
     }
 
     /**
@@ -42,19 +42,23 @@ class EmployeeController extends Controller
      */
     public function store(Request $request)
     {
-        $this->validate($request, [
-            'nama_pegawai' => 'required|min:5',
+        $this->validate(request, [
+            'nama_pegawai' => 'required',
+            'slug' => 'required',
             'alamat_pegawai' => 'required',
             'email_pegawai' => 'required',
+        ],[
+            'required' => 'Atribut Harus Di isi',
         ]);
 
-        $employee = New Employee;
-        $employee->nama_pegawai = $request->nama_pegawai;
-        $employee->alamat_pegawai = $request->alamat_pegawai;
-        $employee->email_pegawai = $request->email_pegawai;
-        $employee->save();
+            $employee = new Employee;
+            $employee->nama_pegawai = $request->nama_pegawai;
+            $employee->slug = str_slug($request->nama_pegawai);
+            $employee->alamat_pegawai = $request->alamat_pegawai;
+            $employee->email_pegawai = $request->email_pegawai;
+            $employee->save();
 
-        return redirect()->route('admin.employee.index')->withSuccess('Berhasil ditambahkan');
+        return redirect()->route('admin.employee.index')->withSuccess('Employee Berhasil ditambahkan');
     }
 
     /**
@@ -65,9 +69,10 @@ class EmployeeController extends Controller
      */
     public function show($id)
     {
-        $employees = Employee::get();
-        return view('admin.employee.index',[
-            'employee'=>$employees,
+        $employee = Employee::find($id);
+        
+        return view('admin.employee.edit',[
+            'employee'=>$employee,
         ]);
     }
 
@@ -77,11 +82,11 @@ class EmployeeController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Employee $employee)
     {
-        $employee = Employee::find($id);
+        // $employees = Employee::all();
 
-        return view('admin.employee.edit',['employee'=>$employee,]);
+        return view('admin.employee.edit', compact('employee'));
     }
 
     /**
@@ -91,19 +96,13 @@ class EmployeeController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Employee $employee)
     {
-        $this->validate($request, [
-            'nama_pegawai' => 'required|min:5',
-            'alamat_pegawai' => 'required',
-            'email_pegawai' => 'required',
+        $category->update([
+            'nama_pegawai' => request('nama_pegawai'),
+            'alamat_pegawai' => request('alamat_pegawai'),
+            'email_pegawai' => request('email_pegawai'),
         ]);
-
-        $employee = Employee::find($id);
-        $employee->nama_pegawai = $request->nama_pegawai;
-        $employee->alamat_pegawai = $request->alamat_pegawai;
-        $employee->email_pegawai = $request->email_pegawai;
-        $employee->save();
 
         return redirect()->route('admin.employee.index')->withSuccess('Data Berhasil Update');
     }
@@ -114,10 +113,10 @@ class EmployeeController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Employee $employee)
     {
-        $employee = Employee::find($id);
         $employee->delete();
-        return redirect()->route('admin.employee.index')->with('danger','Berhasil dihapus');
+
+        return redirect()->route('admin.employee.index');
     }
 }
