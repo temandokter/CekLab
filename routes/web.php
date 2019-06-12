@@ -18,8 +18,20 @@ use App\Http\Controllers\admin\DoctorController;
 | contains the "web" middleware group. Now create something great!
 |
 */
-// Route::get('/','PatientController@index');
+Route::get('/','PatientController@index');
 
+
+Auth::routes();
+
+// <<<<<<< HEAD   
+Route::prefix('admin')->middleware('auth')->name('admin.')->group(function () {
+    Route::resource('/','HomeController');
+    Route::resource('employee','admin\EmployeeController');
+    Route::resource('spesimen_condition','admin/Spesimen_ConditionController');
+    Route::resource('date_spesimen','admin/Date_SpesimenController');
+    Route::resource('officer_confirmation','admin/Officer_ConfirmationController');
+// =======
+});
 
 Route::prefix('admin')->middleware('auth')->name('admin.')->group(function () {
     Route::resource('/','HomeController');
@@ -32,8 +44,7 @@ Route::prefix('admin')->middleware('auth')->name('admin.')->group(function () {
 
     Route::get('clinic/{clinic}/doctor','admin\ClinicDoctorController@index')->name('doctor.clinic');
     
+
 });
 
-Auth::routes();
-
-// Route::get('/{post}', 'PostController@show')->name('show');
+Route::get('/{post}', 'PostController@show')->name('show');

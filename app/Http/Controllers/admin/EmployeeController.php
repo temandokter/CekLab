@@ -1,8 +1,10 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\admin;
+use App\Http\Controllers\Controller;
 use App\Employee;
 use Illuminate\Http\Request;
+use Carbon\Carbon;
 
 class EmployeeController extends Controller
 {
@@ -13,9 +15,10 @@ class EmployeeController extends Controller
      */
     public function index()
     {
-        $employee = Employee::get();
 
-        return view('index',['employee'=>$employee,]);
+        $employees = Employee::latest()->paginate(10);
+        return view('admin.employee.index',['employees'=>$employees,]);
+
     }
 
     /**
@@ -25,7 +28,10 @@ class EmployeeController extends Controller
      */
     public function create()
     {
-        return view('employee.create');
+        $employees = Employee::get();
+        return view('admin.employee.create',[
+            'employee'=>$employees,
+        ]);
     }
 
     /**
@@ -48,7 +54,7 @@ class EmployeeController extends Controller
         $employee->email_pegawai = $request->email_pegawai;
         $employee->save();
 
-        return redirect()->route('employee.category.index')->withSuccess('Berhasil ditambahkan');
+        return redirect()->route('admin.employee.index')->withSuccess('Berhasil ditambahkan');
     }
 
     /**
@@ -59,7 +65,10 @@ class EmployeeController extends Controller
      */
     public function show($id)
     {
-        //
+        $employees = Employee::get();
+        return view('admin.employee.index',[
+            'employee'=>$employees,
+        ]);
     }
 
     /**
@@ -72,7 +81,7 @@ class EmployeeController extends Controller
     {
         $employee = Employee::find($id);
 
-        return view('employee.edit',['employee'=>$employee,]);
+        return view('admin.employee.edit',['employee'=>$employee,]);
     }
 
     /**
@@ -90,13 +99,13 @@ class EmployeeController extends Controller
             'email_pegawai' => 'required',
         ]);
 
-        $employee = New Employee;
+        $employee = Employee::find($id);
         $employee->nama_pegawai = $request->nama_pegawai;
         $employee->alamat_pegawai = $request->alamat_pegawai;
         $employee->email_pegawai = $request->email_pegawai;
         $employee->save();
 
-        return redirect()->route('employee.category.index')->withSuccess('Data Berhasil Update');
+        return redirect()->route('admin.employee.index')->withSuccess('Data Berhasil Update');
     }
 
     /**
@@ -109,6 +118,6 @@ class EmployeeController extends Controller
     {
         $employee = Employee::find($id);
         $employee->delete();
-        return redirect()->route('employee.index')->with('danger','Berhasil dihapus');
+        return redirect()->route('admin.employee.index')->with('danger','Berhasil dihapus');
     }
 }
