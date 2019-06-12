@@ -34,5 +34,4 @@ Route::prefix('admin')->middleware('auth')->name('admin.')->group(function () {
 });
 
 Auth::routes();
-
 // Route::get('/{post}', 'PostController@show')->name('show');

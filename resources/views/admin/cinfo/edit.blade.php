@@ -12,7 +12,7 @@
         </div>
         <!-- /.box-header -->
         <!-- form start -->
-        <form action="{{ route('admin.cinfo.update', $cinfo->id) }}" method="POST">
+        <form action="{{route('admin.cinfo.update', $cinfo->id) }}" method="POST">
           @csrf
           @method("PUT")
           <div class="box-body">
