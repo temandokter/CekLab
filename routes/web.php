@@ -9,7 +9,7 @@ use App\Http\Controllers\admin\DoctorController;
 // use Symfony\Component\Routing\Annotation\Route;
 
 /*
-|--------------------------------------------------------------------------
+|-------------------------------------------------------------------------
 | Web Routes
 |--------------------------------------------------------------------------
 |
@@ -23,17 +23,6 @@ Route::get('/','PatientController@index');
 
 Auth::routes();
 
-// <<<<<<< HEAD   
-Route::prefix('admin')->middleware('auth')->name('admin.')->group(function () {
-    // Route::resource('/','HomeController');
-    // Route::resource('employee','admin\EmployeeController');
-    // Route::resource('spesimen_condition','admin/Spesimen_ConditionController');
-    // Route::resource('date_spesimen','admin/Date_SpesimenController');
-    // Route::resource('officer_confirmation','admin/Officer_ConfirmationController');
-// =======
-});
-
-
 
 Route::prefix('admin')->middleware('auth')->name('admin.')->group(function () {
     Route::resource('/','HomeController');
@@ -43,6 +32,10 @@ Route::prefix('admin')->middleware('auth')->name('admin.')->group(function () {
     Route::resource('clab','admin\ChecklabController');
     Route::resource('cinfo','admin\ClinicalinfoController');
     Route::resource('data','admin\DataController');
+    Route::resource('employee','admin\EmployeeController');
+    Route::resource('spesimen_condition','admin/Spesimen_ConditionController');
+    Route::resource('date_spesimen','admin/Date_SpesimenController');
+    Route::resource('officer_confirmation','admin/Officer_ConfirmationController');
 
     Route::get('clinic/{clinic}/doctor','admin\ClinicDoctorController@index')->name('doctor.clinic');
     
