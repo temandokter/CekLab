@@ -1,8 +1,4 @@
 <?php
-use App\Patient;
-use App\Doctor;
-use App\Http\Controllers\admin\PatientController;
-use App\Http\Controllers\admin\DoctorController;
 // use Illuminate\Routing\Route;
 
 // use Symfony\Component\Routing\Route;
@@ -36,6 +32,7 @@ Route::prefix('admin')->middleware('auth')->name('admin.')->group(function () {
     Route::resource('spesimen_condition','admin/Spesimen_ConditionController');
     Route::resource('date_spesimen','admin/Date_SpesimenController');
     Route::resource('officer_confirmation','admin/Officer_ConfirmationController');
+    // Route::resource('datapasien/{clinical_infos}','admin\DataPasienController');
 
     Route::get('clinic/{clinic}/doctor','admin\ClinicDoctorController@index')->name('doctor.clinic');
     
