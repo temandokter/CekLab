@@ -15,7 +15,7 @@
         <div class="box-body">
           <table id="example1" class="table table-bordered table-striped">
             <thead>
-            <tr>
+            <tr> 
               <th>No</th>
               <th>Nama Pegawai</th>
               <th>Alamat Pegawai</th>
@@ -32,7 +32,7 @@
               <td>{{ $employee->alamat_pegawai }}</td>
               <td>{{ $employee->email_pegawai }}</td>
               <td>
-                <a href="{{ route('admin.employee.edit', $employee->id) }}">Edit</a>
+                <a href="{{ route('admin.employee.edit', $employee->id) }}" class="btn btn-primary">Edit</a>
               </td>
               <td><form action="{{ route('admin.employee.destroy', $employee->id) }}" method="POST">
                 @method("DELETE")

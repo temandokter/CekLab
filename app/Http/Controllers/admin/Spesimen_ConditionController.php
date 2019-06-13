@@ -1,8 +1,11 @@
 <?php
 
-namespace App\Http\Controllers;
-use App\Spesimen_Condition;
+namespace App\Http\Controllers\admin;
+
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+use App\Spesimen_Condition;
+
 
 class Spesimen_ConditionController extends Controller
 {

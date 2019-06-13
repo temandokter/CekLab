@@ -16,7 +16,7 @@
             <h1>Dokter dengan klinik {{ $clinic->nama_klinik }}</h1>
           <table id="example1" class="table table-bordered table-striped">
             <thead>
-            <tr>
+            <tr> 
               <th>Nama Dokter</th>
               <th>Nama Klinik</th>
               <th>Alamat Klinik</th>

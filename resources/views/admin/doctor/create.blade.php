@@ -44,7 +44,7 @@
                 </select>
             </div>
             <div class="form-group col-md-6">
-                <label for="id_pasien">Pasien</label>
+                <label for="">Pasien</label>
                 <select name="patient_id" class="form-control">
                   @foreach ($patients as $patient)
                     <option value="{{ $patient->id }}">{{ $patient->nama_pasien }}</option>                      

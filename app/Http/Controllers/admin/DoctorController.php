@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\admin;
 use App\Doctor;
 use App\Patient;
-use App\Clinic;
+use App\Clinic; 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
@@ -30,10 +30,8 @@ class DoctorController extends Controller
     {
         $patients = Patient::get();
         $clinics = Clinic::get();
-        return view('admin.doctor.create',[
-            'patients'=>$patients,
-        ],['clinics'=>$clinics,
-        ]);
+        return view('admin.doctor.create',
+                    ['patients'=>$patients,],['clinics'=>$clinics,]);
     }
 
     /**

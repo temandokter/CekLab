@@ -14,7 +14,7 @@ class PatientController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {
+    { 
 
         $patients = Patient::latest()->paginate(10);
         return view('admin.patient.index',['patients'=>$patients,]);

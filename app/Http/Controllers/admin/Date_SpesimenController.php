@@ -1,11 +1,14 @@
 <?php
 
-namespace App\Http\Controllers;
-use App\Date_Spesimen;
+namespace App\Http\Controllers\admin;
+
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+use App\Date_Spesimen;
+use Carbon\Carbon;
 
 class Date_SpesimenController extends Controller
-{ 
+{
     /**
      * Display a listing of the resource.
      *
@@ -13,10 +16,8 @@ class Date_SpesimenController extends Controller
      */
     public function index()
     {
-        $date_spesimen = Date_Spesimen::get();
-
-        return view('index',['date_spesimen'=>$date_spesimen,]);
-
+        $date_spesimens = Date_Spesimen::latest()->paginate(10);
+        return view('admin.date_spesimen.index', ['date_spesimen'=>$date_spesimens,]);
     }
 
     /**
@@ -26,7 +27,9 @@ class Date_SpesimenController extends Controller
      */
     public function create()
     {
-        return view('date_spesimen.create');
+        $date_spesimens = DateSpesimen::get();
+
+        return view('admin.date_spesimen.create', ['date_spesimen'=>$date_spesimens,]);
     }
 
     /**
@@ -39,11 +42,12 @@ class Date_SpesimenController extends Controller
     {
         $this->validate($request, ['tanggal' => 'required',]);
 
-        $date_spesimen = New Date_Spesimen;
-        $date_spesimen->tanggal = $request->tanggal;
-        $date_spesimen->save();
+        $datespesimen = New DateSpesimen;
+        $datespesimen->tanggal = Carbon::create($request->tanggal);
+        $datespesimen->slug = str_slug($request->tanggal);
+        $datespesimen->save();
 
-        return redirect()->route('date_spesimen.category.index')->withSuccess('Berhasil ditambahkan');
+        return redirect()->route('admin.datespesimen.index')->withSuccess('Berhasil ditambahkan');
     }
 
     /**
@@ -54,7 +58,10 @@ class Date_SpesimenController extends Controller
      */
     public function show($id)
     {
-        //
+        $datespesimens = DateSpesimen::get($id);
+        return view('admin.datespesimen.edit',[
+            'datespesimen'=>$datespesimens,
+        ]);
     }
 
     /**
@@ -65,9 +72,9 @@ class Date_SpesimenController extends Controller
      */
     public function edit($id)
     {
-        $date_spesimen = Date_Spesimen::find($id);
+        $datespesimen = DateSpesimen::find($id);
 
-        return view('date_spesimen.edit',['date_spesimen'=>$date_spesimen,]);
+        return view('admin.datespesimen.edit',['datespesimen'=>$datespesimen,]);
     }
 
     /**
@@ -83,11 +90,11 @@ class Date_SpesimenController extends Controller
             'tanggal' => 'required',
         ]);
 
-        $date_spesimen = New Date_Spesimen;
-        $date_spesimen->tanggal = $request->tanggal;
-        $date_spesimen->save();
+        $datespesimen = New DateSpesimen;
+        $datespesimen->tanggal = Carbon::create($request->tanggal);
+        $datespesimen->save();
 
-        return redirect()->route('date_spesimen.category.index')->withSuccess('Data Berhasil Update');
+        return redirect()->route('admin.datespesimen.index')->withSuccess('Data Berhasil Update');
     }
 
     /**
@@ -98,8 +105,8 @@ class Date_SpesimenController extends Controller
      */
     public function destroy($id)
     {
-        $date_spesimen = Date_Spesimen::find($id);
-        $date_spesimen->delete();
-        return redirect()->route('date_spesimen.index')->with('danger','Berhasil dihapus');
+        $datespesimen = DateSpesimen::find($id);
+        $datespesimen->delete();
+        return redirect()->route('admin.datespesimen.index')->with('danger','Berhasil dihapus');
     }
 }

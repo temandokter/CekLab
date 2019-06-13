@@ -11,35 +11,17 @@
             </div>
         <!-- /.box-header -->
         <!-- form start -->
-            <form action="{{ route('admin.employee.update', $employee) }}" method="POST">
+            <form action="{{ route('admin.datespesimen.update', $datespesimen) }}" method="POST">
                 @csrf
                 @method("PUT")
                     <div class="box-body">
                         <div class="form-group col-md-6">
-                            <label for="nama_pegawai">Nama Pegawai</label>
-                                <input type="text" class="form-control {{ $errors->has('name_pegawai') ? 'is-invalid' : '' }} " name="nama_pegawai" id="nama_pegawai" placeholder="Masukkan nama pegawai" value="{{ old('name_pegawai') ??$employee->name_pegawai }}">
+                            <label for="tanggal">Tanggal</label>
+                                <input type="date" class="form-control {{ $errors->has('tanggal') ? 'is-invalid' : '' }} " name="tanggal" id="tanggal" placeholder="Masukkan nama pegawai" value="{{ old('tanggal') ??$datespesimen->tanggal }}">
                             <div class="invalid-feedback">
-                                {{ $errors->first('nama_pegawai') }}
+                                {{ $errors->first('tanggal') }}
                             </div>
                         </div>
-                    
-                    
-                        <div class="form-group col-md-6">
-                            <label for="alamat_pegawai">Alamat Pegawai</label>
-                                <input type="text" class="form-control {{ $errors->has('alamat_pegawai') ? 'is-invalid' : '' }} " name="alamat_pegawai" id="alamat_pegawai" placeholder="Masukkan alamat pegawai" value="{{ old('alamat_pegawai') ??$employee->alamat_pegawai }}">
-                            <div class="invalid-feedback">
-                                {{ $errors->first('alamat_pegawai') }}
-                            </div>
-                        </div>
-
-                        <div class="form-group col-md-6">
-                            <label for="email_pegawai">Email Pegawai</label>
-                                <input type="text" class="form-control {{ $errors->has('email_pegawai') ? 'is-invalid' : '' }} " name="email_pegawai" id="email_pegawai" placeholder="Masukkan email pegawai" value="{{ old('email_pegawai') ??$employee->email_pegawai }}">
-                            <div class="invalid-feedback">
-                                {{ $errors->first('email_pegawai') }}
-                            </div>
-                        </div>
-                    </div>
               <!-- /.box-body -->
 
                 <div class="box-footer">

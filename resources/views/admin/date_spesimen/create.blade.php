@@ -7,16 +7,16 @@
       <!-- general form elements -->
         <div class="box box-primary">
             <div class="box-header with-border">
-                <h3 class="box-title">tanggal Spesimen</h3>
+                <h3 class="box-title">Tambah Spesimen</h3>
             </div>
         <!-- /.box-header -->
         <!-- form start -->
-            <form action="{{ route('admin.employee.store') }}" method="POST">
+            <form action="{{ route('admin.dataspesimen.store') }}" method="POST">
                 @csrf
                     <div class="box-body">
                         <div class="form-group col-md-6">
-                            <label for="Tanggal">Tanggal</label>
-                                <input type="date" class="form-control {{ $errors->has('tanggal') ? 'is-invalid' : '' }} " name="tanggal" id="tanggal" placeholder="Masukkan tanggal" value="{{ old('tanggal') }}">
+                            <label for="nama_pegawai">Tanggal Spesimen</label>
+                                <input type="date" class="form-control {{ $errors->has('tanggal') ? 'is-invalid' : '' }} " name="tanggal" id="tanggal" value="{{ old('tanggal') }}">
                             <div class="invalid-feedback">
                                 {{ $errors->first('tanggal') }}
                             </div>

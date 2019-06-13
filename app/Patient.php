@@ -14,4 +14,8 @@ class Patient extends Model
     {
         return $this->hasMany(Clinical_infos::class);
     }
+    public function officer_confirmation()
+    {
+    	return $this->hasMany(Officer_Confirmation::class);
+    }
 }
