@@ -22,6 +22,15 @@
                 @endforeach
               </select>
           </div>
+
+          <div class="form-group col-md-12">
+            <label for="nama_dokter">Nama Dokter</label>
+            <select name="doctor_id" class="form-control">
+              @foreach ($doctors as $doctor)
+                <option value="{{ $doctor->id }}">{{ $doctor->nama_dokter }}</option>                      
+              @endforeach
+            </select>
+        </div>
           
             <div class="form-group col-md-3">
                 <div class="checkbox">

@@ -10,4 +10,8 @@ class Clinical_infos extends Model
     {
         return $this->belongsTo(Patient::class);
     }
+    public function doctor()
+    {
+        return $this->belongsTo(Doctor::class);
+    }
 }
