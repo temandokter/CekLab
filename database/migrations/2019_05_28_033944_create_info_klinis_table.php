@@ -17,11 +17,11 @@ class CreateInfoKlinisTable extends Migration
             $table->bigIncrements('id_klinis');
             $table->string('nama_klinis');
             $table->string('slug')->nullable()->default(null);
-            $table->string('pilih_klinis');
+            $table->string('pilih_klinis'); 
             $table->unsignedBigInteger('id_pasien');
             $table->timestamps();
 
-            $table->foreign('id_pasien')->references('id_pasien')->on('patients');
+            $table->foreign('id_pasien')->references('id')->on('patients');
         });
     }
 

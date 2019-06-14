@@ -1,7 +1,11 @@
 <?php
+// use Illuminate\Routing\Route;
+
+// use Symfony\Component\Routing\Route;
+// use Symfony\Component\Routing\Annotation\Route;
 
 /*
-|--------------------------------------------------------------------------
+|-------------------------------------------------------------------------
 | Web Routes
 |--------------------------------------------------------------------------
 |
@@ -10,11 +14,30 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
+// Route::get('/','PatientController@index');
 
-Route::get('/', function () {
-    return view('welcome');
-});
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+
+Route::prefix('admin')->middleware('auth')->name('admin.')->group(function () {
+    Route::resource('/','HomeController');
+    Route::resource('patient','admin\PatientController');
+    Route::resource('doctor','admin\DoctorController');
+    Route::resource('clinic','admin\ClinicController');
+    Route::resource('clab','admin\ChecklabController');
+    Route::resource('cinfo','admin\ClinicalinfoController');
+    Route::resource('data','admin\DataController');
+    Route::resource('employee','admin\EmployeeController');
+    Route::resource('date_spesimen','admin\Date_SpesimenController');
+    Route::resource('officer_confirmation','admin\Officer_ConfirmationController');
+    Route::resource('spesimen_condition','admin/Spesimen_ConditionController');
+    Route::resource('officer_confirmation','admin/Officer_ConfirmationController');
+    Route::resource('urtract','admin\URController');
+    Route::resource('lrtract','admin\LRController');
+    Route::get('clinic/{clinic}/doctor','admin\ClinicDoctorController@index')->name('doctor.clinic');
+    
+
+});
+
+// Route::get('/{post}', 'PostController@show')->name('show');

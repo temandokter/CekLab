@@ -15,8 +15,6 @@ class AddIdPasienOnDokter extends Migration
     {
         Schema::table('doctors', function (Blueprint $table) {
             $table->unsignedBigInteger('id_pasien')->after('email');
-
-            $table->foreign('id_pasien')->references('id_pasien')->on('patients')->onUpdate('CASCADE')->onDelete('CASCADE');
         });
     }
 
