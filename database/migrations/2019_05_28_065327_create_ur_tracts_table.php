@@ -18,7 +18,9 @@ class CreateUrTractsTable extends Migration
             $table->string('spesimen');
             $table->boolean('pilih');
             $table->string('slug')->nullable()->default(null);
+            $table->unsignedBigInteger('id_pasien');
             $table->timestamps();
+            $table->foreign('id_pasien')->references('id')->on('patients');
         });
     }
 

@@ -33,6 +33,8 @@ Route::prefix('admin')->middleware('auth')->name('admin.')->group(function () {
     Route::resource('officer_confirmation','admin\Officer_ConfirmationController');
     Route::resource('spesimen_condition','admin/Spesimen_ConditionController');
     Route::resource('officer_confirmation','admin/Officer_ConfirmationController');
+    Route::resource('urtract','admin\URController');
+    Route::resource('lrtract','admin\LRController');
     Route::get('clinic/{clinic}/doctor','admin\ClinicDoctorController@index')->name('doctor.clinic');
     
 
